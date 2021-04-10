@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class User extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -22,6 +22,7 @@ class Dashboard extends CI_Controller {
 	function __construct()
     {
         parent::__construct();
+        $this->load->model('users/user_model');
         if (!$this->ion_auth->logged_in())
 			{            
 			$this->session->set_userdata('requested_page', $this->uri->uri_string());
@@ -29,8 +30,9 @@ class Dashboard extends CI_Controller {
        		}
     }
 
-	public function index()
+	public function add_user()
 	{
-		$this->page_construct('dashboard');
+		$data['groups'] = $this->user_model->getGroups();
+		$this->page_construct('user/adduser',$data);
 	}
 }

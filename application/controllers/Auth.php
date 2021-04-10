@@ -465,7 +465,7 @@ class Auth extends CI_Controller
 
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
 		{
-			redirect('auth', 'refresh');
+			redirect('/', 'refresh');
 		}
 
 		$tables = $this->config->item('tables', 'ion_auth');
@@ -486,7 +486,7 @@ class Auth extends CI_Controller
 		}
 		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');
 		$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'trim');
-		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|matches[password_confirm]');
+		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
 
 		if ($this->form_validation->run() === TRUE)
@@ -500,6 +500,7 @@ class Auth extends CI_Controller
 				'last_name' => $this->input->post('last_name'),
 				'company' => $this->input->post('company'),
 				'phone' => $this->input->post('phone'),
+				'group_name' => $this->input->post('group_name'),
 			];
 		}
 		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
@@ -507,14 +508,13 @@ class Auth extends CI_Controller
 			// check to see if we are creating the user
 			// redirect them back to the admin page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("auth", 'refresh');
+			redirect(base_url('users/add'), 'refresh');
 		}
 		else
 		{
 			// display the create user form
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
-
 			$this->data['first_name'] = [
 				'name' => 'first_name',
 				'id' => 'first_name',
@@ -564,7 +564,8 @@ class Auth extends CI_Controller
 				'value' => $this->form_validation->set_value('password_confirm'),
 			];
 
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
+			// $this->_render_page('users/add', $this->data);
+			redirect(base_url('users/add'), 'refresh');
 		}
 	}
 	/**

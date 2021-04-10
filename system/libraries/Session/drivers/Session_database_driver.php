@@ -227,10 +227,27 @@ class CI_Session_database_driver extends CI_Session_driver implements SessionHan
 
 		if ($this->_row_exists === FALSE)
 		{
+			$return_data    = array();  // array where you put your "BLOB" resolved data
+			$offset         = 0;
+			while ($offset < strlen($session_data)) {
+			    if (!strstr(substr($session_data, $offset), "|")) {
+			        throw new Exception("invalid data, remaining: " . substr($session_data, $offset));
+			    }
+			    $pos        = strpos($session_data, "|", $offset);
+			    $num        = $pos - $offset;
+			    $varname    = substr($session_data, $offset, $num);
+			    $offset     += $num + 1;
+			    $data       = unserialize(substr($session_data, $offset));
+			    $return_data[$varname] = $data;  
+			    $offset     += strlen(serialize($data));
+			}
+
 			$insert_data = array(
 				'id' => $session_id,
 				'ip_address' => $_SERVER['REMOTE_ADDR'],
 				'timestamp' => time(),
+				'user_email' => $return_data['email'],
+				'user_id' => $return_data['user_id'],
 				'data' => ($this->_platform === 'postgre' ? base64_encode($session_data) : $session_data)
 			);
 
