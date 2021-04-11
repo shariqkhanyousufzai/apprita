@@ -35,4 +35,10 @@ class User extends CI_Controller {
 		$data['groups'] = $this->user_model->getGroups();
 		$this->page_construct('user/adduser',$data);
 	}
+
+	public function list_user()
+	{
+		$data['users'] = $this->user_model->getUsers();
+		$this->page_construct('user/listuser',$data);
+	}
 }

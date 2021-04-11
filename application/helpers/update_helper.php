@@ -44,3 +44,28 @@ function callsession($param)
     $CI =& get_instance();
     return $CI->session->userdata($param);
 }
+
+function group_description_name()
+{
+    $CI =& get_instance();
+    $CI->db->where('name',$CI->session->userdata('group_name'));
+    $query = $CI->db->get('groups');
+    return $query->result()[0]->description;
+}
+
+function group_description_name_by_name($name)
+{
+    $CI =& get_instance();
+    $CI->db->where('name',$name);
+    $query = $CI->db->get('groups');
+    if($name == 'admin'){
+        $color = 'danger';
+    }else if($name == 'rita_garrett'){
+        $color = 'success';
+    }else if($name == 'lori_nichols'){
+        $color = 'info';
+    }else if($name == 'ramesh_anand'){
+        $color = 'secondary';
+    }
+    return '<span class="badge badge-'.$color.' ">'.$query->result()[0]->description.'</span>';
+}

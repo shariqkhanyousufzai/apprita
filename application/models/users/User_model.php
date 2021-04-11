@@ -11,4 +11,12 @@ class User_model extends CI_Model
 		$q = $this->db->get();
 		return $q->result();
 	}
+
+
+	function getUsers(){
+		$this->db->select('*,FROM_UNIXTIME(created_on) as created_date');
+		$this->db->from('users');
+		$q = $this->db->get();
+		return $q->result();
+	}
 }

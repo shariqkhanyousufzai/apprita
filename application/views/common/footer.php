@@ -20,7 +20,7 @@
 					</div>
 					<div class="d-flex flex-column">
 						<a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary"><?=callsession('first_name')?> <?=callsession('last_name')?></a>
-						<div class="text-muted mt-1">Art Director</div>
+						<div class="text-muted mt-1"><?=group_description_name()?></div>
 						<div class="navi mt-1">
 							<a href="#" class="navi-item">
 								<span class="navi-link p-0 pb-2">
