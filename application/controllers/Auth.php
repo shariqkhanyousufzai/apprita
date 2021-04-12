@@ -134,7 +134,7 @@ class Auth extends CI_Controller
 	public function change_password()
 	{
 		$this->form_validation->set_rules('old', $this->lang->line('change_password_validation_old_password_label'), 'required');
-		$this->form_validation->set_rules('new', $this->lang->line('change_password_validation_new_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|matches[new_confirm]');
+		$this->form_validation->set_rules('new', $this->lang->line('change_password_validation_new_password_label'), 'required|matches[new_confirm]');
 		$this->form_validation->set_rules('new_confirm', $this->lang->line('change_password_validation_new_password_confirm_label'), 'required');
 
 		if (!$this->ion_auth->logged_in())
@@ -174,9 +174,10 @@ class Auth extends CI_Controller
 				'type' => 'hidden',
 				'value' => $user->id,
 			];
-
 			// render
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'change_password', $this->data);
+			$this->session->set_flashdata('message', $this->data['message']);
+			redirect(base_url('users/profile'), 'refresh');
+
 		}
 		else
 		{
@@ -193,7 +194,7 @@ class Auth extends CI_Controller
 			else
 			{
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('auth/change_password', 'refresh');
+				redirect(base_url('users/profile'), 'refresh');
 			}
 		}
 	}

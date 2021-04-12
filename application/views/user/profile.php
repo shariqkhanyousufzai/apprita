@@ -20,16 +20,10 @@
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class="container">
-            <?php if ($this->session->flashdata('success')) { ?>
-                <div class="alert alert-success">
+            <?php if ($this->session->flashdata('message')) { ?>
+                <div class="alert alert-success alert_msg">
                     <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <?php echo $this->session->flashdata('success'); ?>
-                </div>
-            <?php } ?>
-            <?php if ($this->session->flashdata('error')) { ?>
-                <div class="alert alert-danger">
-                    <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <?php echo $this->session->flashdata('error'); ?>
+                    <?php echo $this->session->flashdata('message'); ?>
                 </div>
             <?php } ?>
             <!--begin::Card-->
@@ -95,7 +89,7 @@
                                 <div class="col-xl-2"></div>
                                 <div class="col-xl-7 my-2">
                                     <!--begin::Group-->
-                                    <form class="form" id="kt_form" method="post" action="<?php echo base_url('administrator/update-user'); ?>" enctype="multipart/form-data">
+                                    <form class="form" id="kt_form" method="post" action="<?php echo base_url('users/profile_update'); ?>" enctype="multipart/form-data">
                                         <div class="form-group row">
                                             <label class="col-form-label col-3 text-lg-right text-left">Photo</label>
                                             <div class="col-9">
@@ -121,7 +115,7 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-3 text-lg-right text-left">First Name</label>
                                             <div class="col-9">
-                                                <input class="form-control form-control-lg form-control-solid" type="text" value="<?php echo $user->first_name ?>" name="firstname" />
+                                                <input class="form-control form-control-lg form-control-solid" type="text" value="<?php echo $user->first_name ?>" name="first_name" />
                                             </div>
                                         </div>
                                         <!--end::Group-->
@@ -129,7 +123,7 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-3 text-lg-right text-left">Last Name</label>
                                             <div class="col-9">
-                                                <input class="form-control form-control-lg form-control-solid" type="text" value="<?php echo $user->last_name ?>" name="lastname" />
+                                                <input class="form-control form-control-lg form-control-solid" type="text" value="<?php echo $user->last_name ?>" name="last_name" />
                                             </div>
                                         </div>
                                         <!--end::Group-->
@@ -143,7 +137,7 @@
                                                             <i class="la la-at"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="text" class="form-control form-control-lg form-control-solid" name="email" value="<?php echo $user->email; ?>" placeholder="anna.krox@loop.com" />
+                                                    <input type="text" class="form-control readonly form-control-lg form-control-solid" name="email" value="<?php echo $user->email; ?>" placeholder="anna.krox@loop.com" />
                                                 </div>
                                                 <span class="form-text text-muted">We'll never share your email with anyone else.</span>
                                             </div>
@@ -164,7 +158,7 @@
                                 <div class="row">
                                     <div class="col-xl-2"></div>
                                     <div class="col-xl-7">
-                                        <form action="<?php echo base_url('administrator/change-password'); ?>" method="post">
+                                        <form action="<?php echo base_url('users/profile_password'); ?>" method="post">
                                             <!--begin::Row-->
                                             <div class="row">
 
@@ -178,7 +172,7 @@
                                             <div class="form-group row">
                                                 <label class="col-form-label col-3 text-lg-right text-left">Current Password</label>
                                                 <div class="col-9">
-                                                    <input class="form-control form-control-lg form-control-solid" type="password" name="current_password" value="" placeholder="Please enter your current Password here." />
+                                                    <input class="form-control form-control-lg form-control-solid" type="password" name="old" value="" placeholder="Please enter your current Password here." />
                                                     <!-- <a href="#" class="font-weight-bold font-size-sm">Forgot password ?</a> -->
                                                 </div>
                                             </div>
@@ -187,7 +181,7 @@
                                             <div class="form-group row">
                                                 <label class="col-form-label col-3 text-lg-right text-left">New Password</label>
                                                 <div class="col-9">
-                                                    <input class="form-control form-control-lg form-control-solid" type="password" value="" name="new_password" placeholder="Enter your New Password here." />
+                                                    <input class="form-control form-control-lg form-control-solid" type="password" value="" name="new" placeholder="Enter your New Password here." />
                                                 </div>
                                             </div>
                                             <!--end::Group-->
@@ -195,7 +189,7 @@
                                             <div class="form-group row">
                                                 <label class="col-form-label col-3 text-lg-right text-left">Verify Password</label>
                                                 <div class="col-9">
-                                                    <input class="form-control form-control-lg form-control-solid" type="password" value="" name="verify_password" placeholder="Re-write your new Password." />
+                                                    <input class="form-control form-control-lg form-control-solid" type="password" value="" name="new_confirm" placeholder="Re-write your new Password." />
                                                 </div>
                                             </div>
                                             <!--end::Group-->

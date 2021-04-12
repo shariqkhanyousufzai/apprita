@@ -39,13 +39,13 @@
                         </div>
                     </div>
                     <!--begin::Form-->
-                    <form method="post" action="<?= base_url('auth/create_user') ?>">
+                    <form autocomplete="off" method="post" action="<?= base_url('auth/create_user') ?>">
                       <div class="card-body">
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>First name</label>
-                                    <input type="text" class="form-control"  placeholder="First name" name="first_name" />
+                                    <input autocomplete="off" type="text" class="form-control"  placeholder="First name" name="first_name" />
                                 </div>
                             </div>
                             <div class="col-sm-4">

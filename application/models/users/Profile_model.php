@@ -13,4 +13,12 @@ class Profile_model extends CI_Model
         }
         return false;
 	}
+
+	function updateUser($data){
+		$this->db->where('id', $this->session->userdata('user_id'));
+		if($this->db->update('users', $data)){
+			return true;
+		}
+		return false;
+	}
 }

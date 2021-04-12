@@ -437,6 +437,11 @@
         <?php
         }
         ?>
+        <script type="text/javascript">
+        	$(document).ready(()=>{
+        		$(".alert_msg").show().delay(3000).fadeOut();
+        	});
+        </script>
 		<!--end::Page Scripts-->
 	</body>
 	<!--end::Body-->

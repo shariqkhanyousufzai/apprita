@@ -52,8 +52,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'auth/login';
 // Add user route
 $route['users/add'] = 'users/user/add_user';
+// User List Route
 $route['users/list'] = 'users/user/list_user';
+// Get User Profile
 $route['users/profile'] = 'users/profile';
-// Add user route
+// Update User Profile
+$route['users/profile_update'] = 'users/profile/update_user';
+// Change profle password
+$route['users/profile_password'] = 'auth/change_password';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

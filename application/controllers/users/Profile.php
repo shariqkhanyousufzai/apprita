@@ -35,4 +35,33 @@ class Profile extends CI_Controller {
 		$data['user'] = $this->profile_model->getUsers();
 		$this->page_construct('user/profile',$data);
 	}
+
+	public function update_user(){
+		if (isset($_FILES['profile_avatar']['name']) && !empty($_FILES['profile_avatar']['name'])) {
+			$_FILES['profile_avatar']['name'] = preg_replace('/\s+/', '_', $_FILES['profile_avatar']['name']);
+			$image_extension = pathinfo($_FILES['profile_avatar']['name'], PATHINFO_EXTENSION);
+			$path = './assets/uploads/';
+			$file_name = $_FILES['profile_avatar']['name'];
+			$form_name = 'profile_avatar';
+			$check_upload = upload_image($file_name, $form_name, $path);
+			$avatar_name = $file_name;
+		} else {
+			$this->db->select('avatar');
+			$this->db->from('users');
+			$this->db->where('id', $this->session->userdata('user_id'));
+			$result = $this->db->get()->row();
+			$avatar_name = $result->avatar;
+		}
+		$update_data = array(
+			'first_name' => $_POST['first_name'],
+			'last_name' => $_POST['last_name'],
+			'avatar' => $avatar_name,
+		);
+		if($this->profile_model->updateUser($update_data)){
+			redirect('users/profile');
+		}else{
+			redirect('users/profile');
+		}
+		
+	}
 }
