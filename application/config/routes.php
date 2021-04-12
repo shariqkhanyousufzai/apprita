@@ -60,6 +60,26 @@ $route['users/profile'] = 'users/profile';
 $route['users/profile_update'] = 'users/profile/update_user';
 // Change profle password
 $route['users/profile_password'] = 'auth/change_password';
+// show user information
+$route['users/view/(:any)'] = 'users/user/view_user/$1';
+// edit user information
+$route['users/edit/(:any)'] = 'users/user/edit_user/$1';
+//update user
+$route['users/update'] = 'users/user/update_user';
+//delete user
+$route['users/delete/(:any)'] = 'users/user/delete_user/$1';
+
+// DISCUSSION TAB START
+$route['discussion/createtopic'] = 'discussion/create_topic';
+// Add Topic to db
+$route['discussion/addtopic'] = 'discussion/add_topic';
+// show all discussions
+$route['discussion/list'] = 'discussion/topic_list';
+// DISCUSSION TAB START END
+$route['discussion/view/(:any)'] = 'discussion/view_topic/$1';
+// Add Topic Reply
+$route['discussion/reply'] = 'discussion/add_topic_reply';
+
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -2,7 +2,7 @@
 var KTDatatablesBasicBasic = function() {
 
 	var initTable1 = function() {
-		var table = $('#kt_datatable');
+		var table = $('#kt_datatable1');
 
 		// begin first table
 		table.DataTable({
@@ -186,7 +186,7 @@ var KTDatatablesBasicBasic = function() {
 	};
 
 	var initTable2 = function() {
-		var table = $('#kt_datatable_2');
+		var table = $('#kt_datatable_1');
 
 		// begin first table
 		table.DataTable({

@@ -34,57 +34,85 @@
 
                 <!-- New Customers Accounts Table -->
                 <div class="card-body">
-                    <!--begin: Datatable-->
-                    <!-- <h4><i class="flaticon2-next"></i> New Customers Accounts</h4>
-                    <hr> -->
-                    <table class="table table-separate table-head-custom table-checkable" id="kt_datatable1">
+                        <div class="mb-7">
+                            <div class="row align-items-center">
+                                <div class="col-lg-9 col-xl-8">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-4 my-2 my-md-0">
+                                            <div class="input-icon">
+                                                <input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query" />
+                                                <span>
+                                                    <i class="flaticon2-search-1 text-muted"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 my-2 my-md-0">
+                                            <div class="d-flex align-items-center">
+                                                <label class="mr-3 mb-0 d-none d-md-block">Type:</label>
+                                                <select class="form-control" id="kt_datatable_search_type">
+                                                    <option value="">All</option>
+                                                    <?php
+                                                    foreach ($groups as $group) {
+                                                     ?>
+                                                     <option value="<?=$group->description?>"><?=$group->description?></option>
+                                                     <?php
+                                                 }
+                                                 ?>
+                                             </select>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <table class="datatable datatable-bordered datatable-head-custom" id="kt_datatable">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Created By</th>
-                                <th>Actions</th>
+                                <th  class="all">ID</th>
+                                <th  class="all">Name</th>
+                                <th  class="all">Email</th>
+                                <th  class="all">Role</th>
+                                <th  class="all" >Created By</th>
+                                <th  class="all" >Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <?php 
-                        $sno = 1;
-                        foreach($users as $users ){?>
-                            <tr>
-                                <td><?php echo $sno;?></td>
-                                <td><?php echo $users->first_name;?></td>
-                                <td><?php echo $users->email;?></td>
-                                <td><?php echo group_description_name_by_name($users->group_name);?></td>
-                                <td><?php echo date('Y-m-d',strtotime($users->created_date));?></td>
-                                <td>
-                                    <a href="<?php echo base_url('administrator/view_customer_user'); ?>/<?php echo $users->id;?>" class="btn btn-sm btn-clean btn-icon" title="View Customer">
-                                        <span class="svg-icon svg-icon-md">
-                                            <i class="ki ki-eye"></i>
-                                        </span>
-                                    </a>
-                                    <a href="<?php echo base_url('administrator/edit_customer_user'); ?>/<?php echo $users->id;?>" class="btn btn-sm btn-clean btn-icon" title="Edit Lead">
-                                        <span class="svg-icon svg-icon-md">
-                                            <i class="flaticon2-edit"></i>
-                                        </span>
-                                    </a>
+                            <?php 
+                            $sno = 1;
+                            foreach($users as $users ){?>
+                                <tr>
+                                    <td><?php echo $sno;?></td>
+                                    <td><?php echo $users->first_name;?></td>
+                                    <td><?php echo $users->email;?></td>
+                                    <td><?php echo group_description_name_by_name($users->group_name);?></td>
+                                    <td><?php echo date('Y-m-d',strtotime($users->created_date));?></td>
+                                    <td>
+                                        <a href="<?php echo base_url('users/view/'.encode_url($users->id)); ?>" class="btn btn-sm btn-clean btn-icon" title="View Customer">
+                                            <span class="svg-icon svg-icon-md">
+                                                <i class="ki ki-eye"></i>
+                                            </span>
+                                        </a>
+                                        <a href="<?php echo base_url('users/edit/'.encode_url($users->id)); ?>" class="btn btn-sm btn-clean btn-icon" title="Edit Lead">
+                                            <span class="svg-icon svg-icon-md">
+                                                <i class="flaticon2-edit"></i>
+                                            </span>
+                                        </a>
 
-                                    <a href="<?php echo base_url('administrator/delete_customer_user'); ?>/<?php echo $users->id;?>" class="btn btn-sm deleteBtn btn-clean btn-icon" title="Delete">
-                                        <span class="svg-icon svg-icon-md">
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <rect x="0" y="0" width="24" height="24" />
-                                                    <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero" />
-                                                    <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3" />
-                                                </g>
-                                            </svg>
-                                        </span>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php $sno++;
-                        }?>
+                                        <a href="<?php echo base_url('users/delete/'.encode_url($users->id)); ?>" class="btn btn-sm deleteBtn btn-clean btn-icon" title="Delete">
+                                            <span class="svg-icon svg-icon-md">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24" />
+                                                        <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero" />
+                                                        <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3" />
+                                                    </g>  </svg>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <?php $sno++;
+                            }?>
                         </tbody>
                     </table>
                     <!--end: Datatable-->
@@ -96,3 +124,48 @@
     </div>
     <!--end::Entry-->
 </div>
+<script type="text/javascript">
+    var KTDatatableHtmlTableDemo = function() {
+    // Private functions
+
+    // demo initializer
+    var demo = function() {
+
+        var datatable = $('#kt_datatable').KTDatatable({
+            data: {
+                saveState: {cookie: false},
+            },
+            search: {
+                input: $('#kt_datatable_search_query'),
+                key: 'generalSearch'
+            },
+            
+        });
+
+
+
+        $('#kt_datatable_search_status').on('change', function() {
+            datatable.search($(this).val().toLowerCase(), 'Status');
+        });
+
+        $('#kt_datatable_search_type').on('change', function() {
+            datatable.search($(this).val().toLowerCase(), 'Role');
+        });
+
+        $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+
+    };
+
+    return {
+        // Public functions
+        init: function() {
+            // init dmeo
+            demo();
+        },
+    };
+}();
+
+jQuery(document).ready(function() {
+    KTDatatableHtmlTableDemo.init();
+});
+</script>

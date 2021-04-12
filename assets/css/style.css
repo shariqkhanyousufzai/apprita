@@ -26,3 +26,51 @@ button#kt_aside_toggle {
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+
+.ql-image,.ql-code-block{
+	display: none!important;
+}
+
+.discussionlist th.datatable-cell.datatable-cell-sort:nth-child(5) {
+    text-align: center!important;
+}
+.avatar_topic img {
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+}
+
+.avatar_topic {
+    text-align: center;
+}
+.topic_name{
+	color: gray;
+    font-size: 15px;
+    padding: 1px 0px;
+}
+.topic_group{
+	color: gray;
+    font-size: 12px;
+    padding: 1px 0px;
+}
+.topic_body ul{
+	padding-left: 0px!important;
+}
+.card-body.topicmainbody {
+    background: #8080802e;
+    height: 269px!important;
+    box-shadow: 1px 2px 5px 1px grey;
+    overflow-y: scroll;
+    padding: 25px;
+}
+
+.card-body.topicmainbodyreply {
+    background: #8080802e;
+    box-shadow: 1px 2px 5px 1px grey;
+    overflow-y: scroll;
+    padding: 25px;
+}
+
+.topicsendreply i.flaticon2-photograph.icon-lg,.topicsendreply .flaticon2-photo-camera{
+	display: none;
+}

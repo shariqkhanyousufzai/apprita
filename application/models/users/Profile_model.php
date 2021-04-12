@@ -6,6 +6,7 @@ class Profile_model extends CI_Model
 	function getUsers(){
 		$this->db->select('*');
 		$this->db->from('users');
+		$this->db->where('is_deleted',0);
 		$this->db->where('id',$this->session->userdata('user_id'));
 		$q = $this->db->get();
         if ($q->num_rows() > 0) {
