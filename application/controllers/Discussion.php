@@ -62,6 +62,12 @@ class Discussion extends CI_Controller {
 		$this->page_construct('discussion/topiclist',$data);
 	}
 
+	public function my_list(){
+		$data['getCategorys'] = $this->discussion_model->getCategory();
+		$data['topics'] = $this->discussion_model->topicsById();
+		$this->page_construct('discussion/topiclist',$data);
+	}
+
 
 	public function view_topic($id){
 		$decodeId = decode_url($id);

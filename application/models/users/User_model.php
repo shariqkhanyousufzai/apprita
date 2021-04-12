@@ -17,6 +17,9 @@ class User_model extends CI_Model
 		$this->db->select('*,FROM_UNIXTIME(created_on) as created_date');
 		$this->db->from('users');
 		$this->db->where('id !=',$this->session->userdata('user_id'));
+		if($this->session->userdata('group_name') != 'admin'){
+			$this->db->where('created_by',$this->session->userdata('user_id'));
+		}
 		$this->db->where('is_deleted',0);
 		$q = $this->db->get();
 		return $q->result();

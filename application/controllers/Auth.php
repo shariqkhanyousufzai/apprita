@@ -502,6 +502,7 @@ class Auth extends CI_Controller
 				'company' => $this->input->post('company'),
 				'phone' => $this->input->post('phone'),
 				'group_name' => $this->input->post('group_name'),
+				'created_by' => $this->session->userdata('user_id'),
 			];
 		}
 		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))

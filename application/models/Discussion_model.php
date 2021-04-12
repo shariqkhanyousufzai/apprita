@@ -20,6 +20,16 @@ class Discussion_model extends CI_Model
 		return $q->result();
 	}
 
+
+	function topicsById(){
+			$this->db->select('t.*,tc.name as category');
+			$this->db->from('topic as t');
+			$this->db->join('topic_category tc','t.topic_category_id = tc.id','LEFT');
+			$this->db->where('t.created_by',$this->session->userdata('user_id'));
+			$q = $this->db->get();
+			return $q->result();
+		}
+
 	function topicById($id){
 		$this->db->select('t.*,u.first_name,u.group_name,u.avatar');
 		$this->db->from('topic as t');

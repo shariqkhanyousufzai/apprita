@@ -79,6 +79,8 @@ $route['discussion/list'] = 'discussion/topic_list';
 $route['discussion/view/(:any)'] = 'discussion/view_topic/$1';
 // Add Topic Reply
 $route['discussion/reply'] = 'discussion/add_topic_reply';
+// My Topic List
+$route['discussion/mylist'] = 'discussion/my_list';
 
 
 $route['404_override'] = '';
