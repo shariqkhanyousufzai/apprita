@@ -71,6 +71,21 @@ class User extends CI_Controller {
 		}
 	}
 
+	public function send_message(){
+		$data = array(
+			'reciever_id' => $this->input->post('reciever_id'),
+			'body' => $this->input->post('msg'),
+			'sender_id' => $this->session->userdata('user_id'),
+			'created_by' => $this->session->userdata('user_id'),
+		);
+		if($this->user_model->createMessage($data)){
+			echo json_encode('success');
+		}else{
+			echo json_encode('failed');
+		}
+	}
+
+
 	public function update_user(){
 		$this->form_validation->set_rules('email', 'Email', 'required');
 	    if ($this->form_validation->run() == TRUE)
@@ -94,5 +109,28 @@ class User extends CI_Controller {
         	$this->session->set_flashdata('message', validation_errors());
         	redirect(base_url('users/list'),'refresh');
         }
+	}
+
+	public function get_messages(){
+		$msgRes = $this->user_model->getMessages();
+		echo json_encode($msgRes);
+	}
+
+	public function get_active_messages(){
+		$msgRes = $this->user_model->getActiveMessages();
+		if(isset($msgRes[0]->activemsg)){
+			$msgRes = $msgRes[0]->activemsg;
+		}else{
+			$msgRes = 0;
+		}
+		echo json_encode($msgRes);
+	}
+
+	public function update_message_number(){
+		if($this->user_model->updateMessageNumber()){
+			echo json_encode('success');
+		}else{
+			echo json_encode('failed');
+		}
 	}
 }

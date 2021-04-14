@@ -43,6 +43,22 @@ class User_model extends CI_Model
 		return false;
 	}
 
+	function updateMessageNumber(){
+		$this->db->where('reciever_id', $this->session->userdata('user_id'));
+		$this->db->set('status',1);
+		if($this->db->update('message')){
+			return true;
+		}
+		return false;
+	}
+
+	function createMessage($data){
+		if($this->db->insert('message', $data)){
+			return true;
+		}
+		return false;
+	}
+
 	function deleteUser($id,$email){
 		$email = $email.'-d';
 		$this->db->where('id', $id);
@@ -52,5 +68,26 @@ class User_model extends CI_Model
 			return true;
 		}
 		return false;
+	}
+
+
+	function getMessages(){
+		$this->db->select('u.first_name,u.group_name,u.avatar,m.body,TIMESTAMPDIFF(MINUTE,m.created_on,NOW()) as diff');
+        $this->db->from('message as m');
+        $this->db->join('users as u','m.sender_id = u.id');
+        $this->db->where('m.reciever_id', $this->session->userdata('user_id'));
+        $this->db->order_by('m.id','DESC');
+        $this->db->limit(10);
+        $query = $this->db->get();
+        return $query->result();
+	}
+
+	function getActiveMessages(){
+		$this->db->select('count(id) as activemsg');
+        $this->db->from('message');
+        $this->db->where('status',0);
+        $this->db->where('reciever_id', $this->session->userdata('user_id'));
+        $query = $this->db->get();
+        return $query->result();
 	}
 }

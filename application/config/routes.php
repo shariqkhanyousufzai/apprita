@@ -81,6 +81,14 @@ $route['discussion/view/(:any)'] = 'discussion/view_topic/$1';
 $route['discussion/reply'] = 'discussion/add_topic_reply';
 // My Topic List
 $route['discussion/mylist'] = 'discussion/my_list';
+// Send Message
+$route['users/sendmessage'] = 'users/user/send_message';
+//get Message
+$route['users/getmessages'] = 'users/user/get_messages';
+//get Message Number
+$route['users/getactivemessages'] = 'users/user/get_active_messages';
+//update Message Number
+$route['users/updatemessagenumber'] = 'users/user/update_message_number';
 
 
 $route['404_override'] = '';

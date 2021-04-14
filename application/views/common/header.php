@@ -265,18 +265,15 @@
 <div class="dropdown mr-1">
 <!--begin::Toggle-->
 <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
-<div class="btn btn-icon btn-clean btn-dropdown btn-lg pulse pulse-primary">
-<span class="svg-icon svg-icon-xl svg-icon-primary">
-<!--begin::Svg Icon | path:<?=$assets?>/media/svg/icons/Code/Compiling.svg-->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-		<rect x="0" y="0" width="24" height="24" />
-		<path d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z" fill="#000000" opacity="0.3" />
-		<path d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z" fill="#000000" />
-	</g>
-</svg>
-<!--end::Svg Icon-->
-</span>
+<div class="btn btn-icon btn-clean btn-dropdown btn-lg pulse pulse-primary headermessage">
+<span class="label label-xl label-success mr-2 notifymsgnumber">0</span>
+<span class="svg-icon svg-icon-danger svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\keen\theme\demo1\dist/../src/media/svg/icons\Communication\Mail-heart.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <path d="M6,2 L18,2 C18.5522847,2 19,2.44771525 19,3 L19,13 C19,13.5522847 18.5522847,14 18,14 L6,14 C5.44771525,14 5,13.5522847 5,13 L5,3 C5,2.44771525 5.44771525,2 6,2 Z M13.8,4 C13.1562,4 12.4033,4.72985286 12,5.2 C11.5967,4.72985286 10.8438,4 10.2,4 C9.0604,4 8.4,4.88887193 8.4,6.02016349 C8.4,7.27338783 9.6,8.6 12,10 C14.4,8.6 15.6,7.3 15.6,6.1 C15.6,4.96870845 14.9396,4 13.8,4 Z" fill="#F64E60" opacity="0.3"/>
+        <path d="M3.79274528,6.57253826 L12,12.5 L20.2072547,6.57253826 C20.4311176,6.4108595 20.7436609,6.46126971 20.9053396,6.68513259 C20.9668779,6.77033951 21,6.87277228 21,6.97787787 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6.97787787 C3,6.70173549 3.22385763,6.47787787 3.5,6.47787787 C3.60510559,6.47787787 3.70753836,6.51099993 3.79274528,6.57253826 Z" fill="#F64E60"/>
+    </g>
+</svg><!--end::Svg Icon--></span>
 <span class="pulse-ring"></span>
 </div>
 </div>
@@ -288,21 +285,20 @@
 <div class="d-flex flex-column pt-12 bgi-size-cover bgi-no-repeat rounded-top" style="background-image: url(<?=$assets?>/media/bg/bg-5.jpg)">
 <!--begin::Title-->
 <h4 class="d-flex flex-center rounded-top">
-	<span class="text-white">Message Center</span>
-	<span class="btn btn-success btn-sm font-weight-bold ml-2">25</span>
+	<span class="text-white">Message</span>
 </h4>
 <!--end::Title-->
 <!--begin::Tabs-->
 <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-line-transparent-white nav-tabs-line-active-border-success mt-3 px-8 font-size-lg" role="tablist">
-	<li class="nav-item">
+	<!-- <li class="nav-item">
 		<a class="nav-link active show" data-toggle="tab" href="#topbar_notifications_notifications">Reminders</a>
-	</li>
-	<li class="nav-item">
+	</li> -->
+	<!-- <li class="nav-item">
 		<a class="nav-link" data-toggle="tab" href="#topbar_notifications_events">Events</a>
 	</li>
 	<li class="nav-item">
 		<a class="nav-link" data-toggle="tab" href="#topbar_notifications_logs">Logs</a>
-	</li>
+	</li> -->
 </ul>
 <!--end::Tabs-->
 </div>
@@ -312,287 +308,9 @@
 <!--begin::Tabpane-->
 <div class="tab-pane active show p-8" id="topbar_notifications_notifications" role="tabpanel">
 	<!--begin::Scroll-->
-	<div class="scroll pr-7 mr-n7" data-scroll="true" data-height="300" data-mobile-height="200">
-		<!--begin::Item-->
-		<div class="d-flex align-items-center mb-6">
-			<!--begin::Symbol-->
-			<div class="symbol symbol-35 flex-shrink-0 mr-3">
-				<img alt="Pic" src="<?=$assets?>/media/users/100_5.jpg" />
-			</div>
-			<!--end::Symbol-->
-			<!--begin::Content-->
-			<div class="d-flex flex-wrap flex-row-fluid">
-				<!--begin::Text-->
-				<div class="d-flex flex-column pr-5 flex-grow-1">
-					<a href="#" class="text-dark text-hover-primary mb-1 font-weight-bold font-size-lg">Marcus Smart</a>
-					<span class="text-muted font-weight-bold">UI/UX, Art Director</span>
-				</div>
-				<!--end::Text-->
-				<!--begin::Section-->
-				<div class="d-flex align-items-center py-2">
-					<!--begin::Label-->
-					<span class="text-success font-weight-bolder font-size-sm pr-6">+65%</span>
-					<!--end::Label-->
-					<!--begin::Btn-->
-					<a href="#" class="btn btn-icon btn-light btn-sm">
-						<span class="svg-icon svg-icon-md svg-icon-success">
-							<!--begin::Svg Icon | path:<?=$assets?>/media/svg/icons/Navigation/Angle-right.svg-->
-							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-									<polygon points="0 0 24 0 24 24 0 24" />
-									<path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-270.000000) translate(-12.000003, -11.999999)" />
-								</g>
-							</svg>
-							<!--end::Svg Icon-->
-						</span>
-					</a>
-					<!--end::Btn-->
-				</div>
-				<!--end::Section-->
-			</div>
-			<!--end::Content-->
-		</div>
-		<!--end::Item-->
-		<!--begin::Item-->
-		<div class="d-flex align-items-center mb-6">
-			<!--begin::Symbol-->
-			<div class="symbol symbol-35 symbol-light-info flex-shrink-0 mr-3">
-				<span class="symbol-label font-weight-bolder font-size-lg">AH</span>
-			</div>
-			<!--end::Symbol-->
-			<!--begin::Content-->
-			<div class="d-flex flex-wrap flex-row-fluid">
-				<!--begin::Text-->
-				<div class="d-flex flex-column pr-5 flex-grow-1">
-					<a href="#" class="text-dark text-hover-primary mb-1 font-weight-bold font-size-lg">Andreas Hawks</a>
-					<span class="text-muted font-weight-bold">Python Developer</span>
-				</div>
-				<!--end::Text-->
-				<!--begin::Section-->
-				<div class="d-flex align-items-center py-2">
-					<!--begin::Label-->
-					<span class="text-success font-weight-bolder font-size-sm pr-6">+23%</span>
-					<!--end::Label-->
-					<!--begin::Btn-->
-					<a href="#" class="btn btn-icon btn-light btn-sm">
-						<span class="svg-icon svg-icon-md svg-icon-success">
-							<!--begin::Svg Icon | path:<?=$assets?>/media/svg/icons/Navigation/Angle-right.svg-->
-							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-									<polygon points="0 0 24 0 24 24 0 24" />
-									<path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-270.000000) translate(-12.000003, -11.999999)" />
-								</g>
-							</svg>
-							<!--end::Svg Icon-->
-						</span>
-					</a>
-					<!--end::Btn-->
-				</div>
-				<!--end::Section-->
-			</div>
-			<!--end::Content-->
-		</div>
-		<!--end::Item-->
-		<!--begin::Item-->
-		<div class="d-flex align-items-center mb-6">
-			<!--begin::Symbol-->
-			<div class="symbol symbol-35 symbol-light-success flex-shrink-0 mr-3">
-				<span class="symbol-label font-weight-bolder font-size-lg">SC</span>
-			</div>
-			<!--end::Symbol-->
-			<!--begin::Content-->
-			<div class="d-flex flex-wrap flex-row-fluid">
-				<!--begin::Text-->
-				<div class="d-flex flex-column pr-5 flex-grow-1">
-					<a href="#" class="text-dark text-hover-primary mb-1 font-weight-bold font-size-lg">Sarah Connor</a>
-					<span class="text-muted font-weight-bold">HTML, CSS. jQuery</span>
-				</div>
-				<!--end::Text-->
-				<!--begin::Section-->
-				<div class="d-flex align-items-center py-2">
-					<!--begin::Label-->
-					<span class="text-danger font-weight-bolder font-size-sm pr-6">-34%</span>
-					<!--end::Label-->
-					<!--begin::Btn-->
-					<a href="#" class="btn btn-icon btn-light btn-sm">
-						<span class="svg-icon svg-icon-md svg-icon-success">
-							<!--begin::Svg Icon | path:<?=$assets?>/media/svg/icons/Navigation/Angle-right.svg-->
-							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-									<polygon points="0 0 24 0 24 24 0 24" />
-									<path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-270.000000) translate(-12.000003, -11.999999)" />
-								</g>
-							</svg>
-							<!--end::Svg Icon-->
-						</span>
-					</a>
-					<!--end::Btn-->
-				</div>
-				<!--end::Section-->
-			</div>
-			<!--end::Content-->
-		</div>
-		<!--end::Item-->
-		<!--begin::Item-->
-		<div class="d-flex align-items-center mb-6">
-			<!--begin::Symbol-->
-			<div class="symbol symbol-35 flex-shrink-0 mr-3">
-				<img alt="Pic" src="<?=$assets?>/media/users/100_7.jpg" />
-			</div>
-			<!--end::Symbol-->
-			<!--begin::Content-->
-			<div class="d-flex flex-wrap flex-row-fluid">
-				<!--begin::Text-->
-				<div class="d-flex flex-column pr-5 flex-grow-1">
-					<a href="#" class="text-dark text-hover-primary mb-1 font-weight-bold font-size-lg">Amanda Harden</a>
-					<span class="text-muted font-weight-bold">UI/UX, Art Director</span>
-				</div>
-				<!--end::Text-->
-				<!--begin::Section-->
-				<div class="d-flex align-items-center py-2">
-					<!--begin::Label-->
-					<span class="text-success font-weight-bolder font-size-sm pr-6">+72%</span>
-					<!--end::Label-->
-					<!--begin::Btn-->
-					<a href="#" class="btn btn-icon btn-light btn-sm">
-						<span class="svg-icon svg-icon-md svg-icon-success">
-							<!--begin::Svg Icon | path:<?=$assets?>/media/svg/icons/Navigation/Angle-right.svg-->
-							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-									<polygon points="0 0 24 0 24 24 0 24" />
-									<path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-270.000000) translate(-12.000003, -11.999999)" />
-								</g>
-							</svg>
-							<!--end::Svg Icon-->
-						</span>
-					</a>
-					<!--end::Btn-->
-				</div>
-				<!--end::Section-->
-			</div>
-			<!--end::Content-->
-		</div>
-		<!--end::Item-->
-		<!--begin::Item-->
-		<div class="d-flex align-items-center mb-6">
-			<!--begin::Symbol-->
-			<div class="symbol symbol-35 symbol-light-danger flex-shrink-0 mr-3">
-				<span class="symbol-label font-weight-bolder font-size-lg">SR</span>
-			</div>
-			<!--end::Symbol-->
-			<!--begin::Content-->
-			<div class="d-flex flex-wrap flex-row-fluid">
-				<!--begin::Text-->
-				<div class="d-flex flex-column pr-5 flex-grow-1">
-					<a href="#" class="text-dark text-hover-primary mb-1 font-weight-bold font-size-lg">Sean Robbins</a>
-					<span class="text-muted font-weight-bold">UI/UX, Art Director</span>
-				</div>
-				<!--end::Text-->
-				<!--begin::Section-->
-				<div class="d-flex align-items-center py-2">
-					<!--begin::Label-->
-					<span class="text-success font-weight-bolder font-size-sm pr-6">+65%</span>
-					<!--end::Label-->
-					<!--begin::Btn-->
-					<a href="#" class="btn btn-icon btn-light btn-sm">
-						<span class="svg-icon svg-icon-md svg-icon-success">
-							<!--begin::Svg Icon | path:<?=$assets?>/media/svg/icons/Navigation/Angle-right.svg-->
-							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-									<polygon points="0 0 24 0 24 24 0 24" />
-									<path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-270.000000) translate(-12.000003, -11.999999)" />
-								</g>
-							</svg>
-							<!--end::Svg Icon-->
-						</span>
-					</a>
-					<!--end::Btn-->
-				</div>
-				<!--end::Section-->
-			</div>
-			<!--end::Content-->
-		</div>
-		<!--end::Item-->
-		<!--begin::Item-->
-		<div class="d-flex align-items-center mb-6">
-			<!--begin::Symbol-->
-			<div class="symbol symbol-35 symbol-light-success flex-shrink-0 mr-3">
-				<span class="symbol-label font-weight-bolder font-size-lg">SC</span>
-			</div>
-			<!--end::Symbol-->
-			<!--begin::Content-->
-			<div class="d-flex flex-wrap flex-row-fluid">
-				<!--begin::Text-->
-				<div class="d-flex flex-column pr-5 flex-grow-1">
-					<a href="#" class="text-dark text-hover-primary mb-1 font-weight-bold font-size-lg">Ana Stone</a>
-					<span class="text-muted font-weight-bold">Figma, PSD</span>
-				</div>
-				<!--end::Text-->
-				<!--begin::Section-->
-				<div class="d-flex align-items-center py-2">
-					<!--begin::Label-->
-					<span class="text-info font-weight-bolder font-size-sm pr-6">+34%</span>
-					<!--end::Label-->
-					<!--begin::Btn-->
-					<a href="#" class="btn btn-icon btn-light btn-sm">
-						<span class="svg-icon svg-icon-md svg-icon-success">
-							<!--begin::Svg Icon | path:<?=$assets?>/media/svg/icons/Navigation/Angle-right.svg-->
-							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-									<polygon points="0 0 24 0 24 24 0 24" />
-									<path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-270.000000) translate(-12.000003, -11.999999)" />
-								</g>
-							</svg>
-							<!--end::Svg Icon-->
-						</span>
-					</a>
-					<!--end::Btn-->
-				</div>
-				<!--end::Section-->
-			</div>
-			<!--end::Content-->
-		</div>
-		<!--end::Item-->
-		<!--begin::Item-->
-		<div class="d-flex align-items-center">
-			<!--begin::Symbol-->
-			<div class="symbol symbol-35 symbol-light-primary flex-shrink-0 mr-3">
-				<span class="symbol-label font-weight-bolder font-size-lg">JT</span>
-			</div>
-			<!--end::Symbol-->
-			<!--begin::Content-->
-			<div class="d-flex flex-wrap flex-row-fluid">
-				<!--begin::Text-->
-				<div class="d-flex flex-column pr-5 flex-grow-1">
-					<a href="#" class="text-dark text-hover-primary mb-1 font-weight-bold font-size-lg">Jason Tatum</a>
-					<span class="text-muted font-weight-bold">ASP.NET Developer</span>
-				</div>
-				<!--end::Text-->
-				<!--begin::Section-->
-				<div class="d-flex align-items-center py-2">
-					<!--begin::Label-->
-					<span class="text-success font-weight-bolder font-size-sm pr-6">+139%</span>
-					<!--end::Label-->
-					<!--begin::Btn-->
-					<a href="#" class="btn btn-icon btn-light btn-sm">
-						<span class="svg-icon svg-icon-md svg-icon-success">
-							<!--begin::Svg Icon | path:<?=$assets?>/media/svg/icons/Navigation/Angle-right.svg-->
-							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-								<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-									<polygon points="0 0 24 0 24 24 0 24" />
-									<path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-270.000000) translate(-12.000003, -11.999999)" />
-								</g>
-							</svg>
-							<!--end::Svg Icon-->
-						</span>
-					</a>
-					<!--end::Btn-->
-				</div>
-				<!--end::Section-->
-			</div>
-			<!--end::Content-->
-		</div>
-		<!--end::Item-->
+	<div class="scroll pr-7 mr-n7 headermessages" data-scroll="true" data-height="300" data-mobile-height="200">
+		
+
 	</div>
 	<!--end::Scroll-->
 	<!--begin::Action-->

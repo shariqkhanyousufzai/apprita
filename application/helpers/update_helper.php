@@ -181,3 +181,22 @@ if ( ! function_exists('upload_image'))
     return $CI->encrypt->decode($string, $key);
 }
 // encryption method codeigniter end
+
+
+
+// get fields 
+if ( ! function_exists('get_messages'))
+    {
+        function get_messages($id)
+        {
+            $CI =& get_instance();
+            $CI->db->select('u.first_name,u.group_name,u.avatar,m.body');
+            $CI->db->from('message as m');
+            $CI->db->join('users as u','m.sender_id = u.id');
+            $CI->db->where('m.reciever_id', $id);
+            $CI->db->order_by('m.id','DESC');
+            $CI->db->limit(10);
+            $query = $CI->db->get();
+            echo json_encode($query->result());
+        }
+    }

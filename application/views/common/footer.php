@@ -1,4 +1,22 @@
-
+<!-- Msg Modal-->
+<div class="modal fade " id="msgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Type Your Message</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<i aria-hidden="true" class="ki ki-close"></i>
+				</button>
+			</div>
+			<input type="hidden" name="user_id" class="user_id" value="">
+			<div class="modal-body"><textarea class="form-control border-0 p-0 textareamsg" rows="2" placeholder="Type a message"></textarea></div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+				<button type="button"  class="btn btn-primary font-weight-bold send_msg">Send Message</button>
+			</div>
+		</div>
+	</div>
+</div>
 <!-- begin::User Panel-->
 		<div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
 			<!--begin::Header-->
@@ -445,6 +463,172 @@
 		}
 		?>
 		<!--end::Page Scripts-->
+
+		<!-- send msg script -->
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(document).on('click','.send_msg',()=>{
+					var getRecieverId = $('.user_id').val();
+					var getMsg = $('.textareamsg').val();
+					$.ajax({
+						url : '<?=base_url("users/sendmessage")?>',
+						type : 'post',
+						data : {
+							reciever_id : getRecieverId,
+							msg : getMsg
+						},
+						success: function(data){
+		                  var res = JSON.parse(data);
+		                  jQuery("#msgModal").modal('hide');
+		                  if(res == 'success'){
+		                  	Swal.fire({
+				                  html: 'Message Has Been Send!',
+				                })
+		                  }else{
+		                  	Swal.fire({
+				                  html: 'Failed Try Again Later!',
+				                })
+		                  }
+		                 },
+		                 error: function(data){
+		                  console.log("error!");
+		                 }
+					});
+				})
+				// call once when page load
+				$.getJSON( "<?=base_url('users/getmessages')?>", function(data) {
+						var HTML = '';
+						var BASEURL = '<?=$assets?>/uploads/';
+						var TimeDiff = '';
+						for(i in data){
+							if(data[i].diff < 60){
+								TimeDiff = data[i].diff + ' Minutes ago';
+							}else if(data[i].diff >= 60 && data[i].diff <= 1440){
+								TimeDiff = Math.round(parseFloat(data[i].diff / 60)) + ' Hours ago' ;
+							}else{
+								TimeDiff = Math.round(parseFloat(data[i].diff / 1440)) + ' Days ago' ;
+							}
+							HTML += `<div class="d-flex align-items-center mt-2">
+										<div class="symbol symbol-35 symbol-light-primary flex-shrink-0 mr-3">
+											<img src = ${BASEURL+data[i].avatar}>
+										</div>
+										<div class="d-flex flex-wrap flex-row-fluid">
+											<div class="d-flex flex-column pr-5 flex-grow-1">
+												<a href="#" class="text-dark text-hover-primary mb-1 font-weight-bold font-size-lg">${data[i].first_name}</a>
+												<span class="text-muted font-weight-bold">${TimeDiff}</span>
+											</div>
+											<div class="d-flex align-items-center py-2">
+												<a href="#" class="btn btn-icon btn-light btn-sm">
+													<span class="svg-icon svg-icon-md svg-icon-success">
+														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+															<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+																<polygon points="0 0 24 0 24 24 0 24" />
+																<path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-270.000000) translate(-12.000003, -11.999999)" />
+															</g>
+														</svg>
+													</span>
+												</a>
+											</div>
+										</div>
+									</div>`
+
+						}
+						$('.headermessages').html(HTML);
+					});
+				var currentMsgCount = 0;
+				$.getJSON( "<?=base_url('users/getactivemessages')?>", function(data) {
+						$('.notifymsgnumber').html(data);
+						console.log(data)
+						console.log(currentMsgCount)
+						currentMsgCount = data;
+					});
+				// call every 20 messages limit 10
+				setInterval(()=>{
+					$.getJSON( "<?=base_url('users/getmessages')?>", function(data) {
+						var HTML = '';
+						var BASEURL = '<?=$assets?>/uploads/';
+						var TimeDiff = '';
+						for(i in data){
+							if(data[i].diff < 60){
+								TimeDiff = data[i].diff + ' Minutes ago';
+							}else if(data[i].diff >= 60 && data[i].diff <= 1440){
+								TimeDiff = Math.round(parseFloat(data[i].diff / 60)) + ' Hours ago' ;
+							}else{
+								TimeDiff = Math.round(parseFloat(data[i].diff / 1440)) + ' Days ago' ;
+							}
+							HTML += `<div class="d-flex align-items-center mt-2">
+										<div class="symbol symbol-35 symbol-light-primary flex-shrink-0 mr-3">
+											<img src = ${BASEURL+data[i].avatar}>
+										</div>
+										<div class="d-flex flex-wrap flex-row-fluid">
+											<div class="d-flex flex-column pr-5 flex-grow-1">
+												<a href="#" class="text-dark text-hover-primary mb-1 font-weight-bold font-size-lg">${data[i].first_name}</a>
+												<span class="text-muted font-weight-bold">${TimeDiff} </span>
+											</div>
+											<div class="d-flex align-items-center py-2">
+												<a href="#" class="btn btn-icon btn-light btn-sm">
+													<span class="svg-icon svg-icon-md svg-icon-success">
+														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+															<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+																<polygon points="0 0 24 0 24 24 0 24" />
+																<path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-270.000000) translate(-12.000003, -11.999999)" />
+															</g>
+														</svg>
+													</span>
+												</a>
+											</div>
+										</div>
+									</div>`
+
+						}
+						$('.headermessages').html(HTML);
+					});
+				},10000);
+				// call get active messages
+				setInterval(()=>{
+					$.getJSON( "<?=base_url('users/getactivemessages')?>", function(data) {
+						$('.notifymsgnumber').html(data);
+						console.log(data)
+						console.log(currentMsgCount)
+						if(currentMsgCount < data){
+							toastr.options = {
+								  "closeButton": true,
+								  "debug": false,
+								  "newestOnTop": false,
+								  "progressBar": true,
+								  "positionClass": "toast-top-right",
+								  "preventDuplicates": false,
+								  "onclick": null,
+								  "showDuration": "300",
+								  "hideDuration": "1000",
+								  "timeOut": "6000",
+								  "extendedTimeOut": "1000",
+								  "showEasing": "swing",
+								  "hideEasing": "linear",
+								  "showMethod": "fadeIn",
+								  "hideMethod": "fadeOut"
+								};
+
+								toastr.success("Your Received New Message!", "Hi,");
+						}
+						currentMsgCount = data;
+					});
+				},10000);
+
+				// when click on message
+				$(document).on('click','.headermessage',function(){
+					$('.notifymsgnumber').html('0');
+					$.ajax({
+						url : '<?=base_url('users/updatemessagenumber')?>',
+						type : 'post',
+						success: function(data){
+						}
+
+					});
+				});
+			});
+		</script>
 	</body>
 	<!--end::Body-->
 </html>

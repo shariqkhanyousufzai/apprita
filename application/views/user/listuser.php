@@ -75,9 +75,10 @@
                                 <th  class="all">Role</th>
                                 <th  class="all" >Created By</th>
                                 <th  class="all" >Actions</th>
+                                <th  class="all" ></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="position: relative;top: -5px;">
                             <?php 
                             $sno = 1;
                             foreach($users as $users ){?>
@@ -88,6 +89,8 @@
                                     <td><?php echo group_description_name_by_name($users->group_name);?></td>
                                     <td><?php echo date('Y-m-d',strtotime($users->created_date));?></td>
                                     <td>
+
+                                        <span style="overflow: visible; position: relative; width: 125px;">
                                         <a href="<?php echo base_url('users/view/'.encode_url($users->id)); ?>" class="btn btn-sm btn-clean btn-icon" title="View Customer">
                                             <span class="svg-icon svg-icon-md">
                                                 <i class="ki ki-eye"></i>
@@ -98,7 +101,6 @@
                                                 <i class="flaticon2-edit"></i>
                                             </span>
                                         </a>
-
                                         <a href="<?php echo base_url('users/delete/'.encode_url($users->id)); ?>" class="btn btn-sm deleteBtn btn-clean btn-icon" title="Delete">
                                             <span class="svg-icon svg-icon-md">
                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -109,6 +111,13 @@
                                                     </g>  </svg>
                                             </span>
                                         </a>
+                                        <a id="msguser" data-userid="<?=$users->id?>" class="btn btn-sm btn-clean btn-icon" title="Message User">
+                                            <span class="svg-icon svg-icon-md">
+                                                <i class="ki ki-drag"></i>
+                                            </span>
+                                        </a>
+                                            
+                                        </span>
                                     </td>
                                 </tr>
                                 <?php $sno++;
@@ -168,4 +177,14 @@
 jQuery(document).ready(function() {
     KTDatatableHtmlTableDemo.init();
 });
+    $(document).ready(function(){
+        $(document).on('click','#msguser',function(e){
+            e.preventDefault();
+            var getUserId = $(this).data('userid');
+            $('#msgModal').modal('show'); 
+            $('.user_id').val(getUserId);
+        });
+        
+     
+    });
 </script>

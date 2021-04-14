@@ -74,3 +74,10 @@ button#kt_aside_toggle {
 .topicsendreply i.flaticon2-photograph.icon-lg,.topicsendreply .flaticon2-photo-camera{
 	display: none;
 }
+.notifymsgnumber {
+    position: absolute!important;
+    top: 2px!important;
+    height: 20px!important;
+    width: 20px!important;
+    right: -9px;
+}
