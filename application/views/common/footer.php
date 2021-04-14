@@ -534,6 +534,9 @@
 									</div>`
 
 						}
+						if(HTML == ''){
+							HTML = 'No Message Found';
+						}
 						$('.headermessages').html(HTML);
 					});
 				var currentMsgCount = 0;
@@ -581,6 +584,9 @@
 										</div>
 									</div>`
 
+						}
+						if(HTML == ''){
+							HTML = 'No Message Found';
 						}
 						$('.headermessages').html(HTML);
 					});

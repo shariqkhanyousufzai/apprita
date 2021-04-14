@@ -89,6 +89,8 @@ $route['users/getmessages'] = 'users/user/get_messages';
 $route['users/getactivemessages'] = 'users/user/get_active_messages';
 //update Message Number
 $route['users/updatemessagenumber'] = 'users/user/update_message_number';
+//see messages
+$route['users/messages'] = 'users/user/messages';
 
 
 $route['404_override'] = '';

@@ -133,4 +133,8 @@ class User extends CI_Controller {
 			echo json_encode('failed');
 		}
 	}
+
+	public function messages(){
+		$this->page_construct('user/messages');
+	}
 }
