@@ -17,6 +17,28 @@
 		</div>
 	</div>
 </div>
+
+<div class="modal fade " id="allMsgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Messages</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<i aria-hidden="true" class="ki ki-close"></i>
+				</button>
+			</div>
+			<input type="hidden" name="user_id" class="user_id" value="">
+			<div class="modal-body previousmsgs"></div>
+			<input type="hidden" name="user_id" class="user_id" value="">
+			<div class="modal-body"><textarea class="form-control border-0 p-0 textareamsgchat" rows="2" placeholder="Type a message"></textarea></div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+				<button type="button"  class="btn btn-primary font-weight-bold send_msg">Send Message</button>
+			</div>
+		</div>
+	</div>
+</div>
 <!-- begin::User Panel-->
 		<div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
 			<!--begin::Header-->
@@ -471,6 +493,25 @@
 				$(document).on('click','.send_msg',()=>{
 					var getRecieverId = $('.user_id').val();
 					var getMsg = $('.textareamsg').val();
+					if(getMsg == ''){
+						getMsg = $('.textareamsgchat').val();
+						var makeHTML = `<div class="d-flex flex-column mb-5 align-items-end">
+										<div class="d-flex align-items-center">
+											<div class="symbol symbol-circle symbol-40 mr-3">
+												<img alt="Pic" src="<?=$assets?>/uploads/<?=$this->session->userdata('avatar')?>">
+											</div>
+											<div>
+												<a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6"><?=$this->session->userdata('first_name')?></a>
+											</div>
+										</div>
+										<div class="mt-2 rounded p-5 bg-light-success text-dark-50 font-weight-bold font-size-lg text-left max-w-400px">${getMsg}</div>
+									</div>`;
+						$('.previousmsgs').append(makeHTML);
+						setTimeout(function(){
+								$('.previousmsgs').scrollTop($('.previousmsgs')[0].scrollHeight);
+							},200);
+
+					}
 					$.ajax({
 						url : '<?=base_url("users/sendmessage")?>',
 						type : 'post',
@@ -515,11 +556,11 @@
 										</div>
 										<div class="d-flex flex-wrap flex-row-fluid">
 											<div class="d-flex flex-column pr-5 flex-grow-1">
-												<a href="#" class="text-dark text-hover-primary mb-1 font-weight-bold font-size-lg">${data[i].first_name}</a>
+												<a href="<?=base_url('users/messages')?>" class="text-dark text-hover-primary mb-1 font-weight-bold font-size-lg">${data[i].first_name}</a>
 												<span class="text-muted font-weight-bold">${TimeDiff}</span>
 											</div>
 											<div class="d-flex align-items-center py-2">
-												<a href="#" class="btn btn-icon btn-light btn-sm">
+												<a href="<?=base_url('users/messages')?>" class="btn btn-icon btn-light btn-sm">
 													<span class="svg-icon svg-icon-md svg-icon-success">
 														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 															<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -542,8 +583,6 @@
 				var currentMsgCount = 0;
 				$.getJSON( "<?=base_url('users/getactivemessages')?>", function(data) {
 						$('.notifymsgnumber').html(data);
-						console.log(data)
-						console.log(currentMsgCount)
 						currentMsgCount = data;
 					});
 				// call every 20 messages limit 10
@@ -566,11 +605,11 @@
 										</div>
 										<div class="d-flex flex-wrap flex-row-fluid">
 											<div class="d-flex flex-column pr-5 flex-grow-1">
-												<a href="#" class="text-dark text-hover-primary mb-1 font-weight-bold font-size-lg">${data[i].first_name}</a>
+												<a href="<?=base_url('users/messages')?>" class="text-dark text-hover-primary mb-1 font-weight-bold font-size-lg">${data[i].first_name}</a>
 												<span class="text-muted font-weight-bold">${TimeDiff} </span>
 											</div>
 											<div class="d-flex align-items-center py-2">
-												<a href="#" class="btn btn-icon btn-light btn-sm">
+												<a href="<?=base_url('users/messages')?>" class="btn btn-icon btn-light btn-sm">
 													<span class="svg-icon svg-icon-md svg-icon-success">
 														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 															<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -629,6 +668,46 @@
 						url : '<?=base_url('users/updatemessagenumber')?>',
 						type : 'post',
 						success: function(data){
+						}
+
+					});
+				});
+				$(document).on('click','.inboxmsg',function(){
+					var getInboxUser = $(this).data('userid');
+					$('.user_id').val(getInboxUser);
+					$.ajax({
+						url : '<?=base_url('users/inboxmsgs')?>',
+						type : 'post',
+						data : {
+							getInboxUser : getInboxUser
+						},
+						success: function(data){
+							var res = JSON.parse(data);
+							var setClassMsg = '';
+							var HTML = '';
+							for(i in res){
+								if(res[i].sender_id == '<?=$this->session->userdata('user_id')?>'){
+									setClassMsg = 'align-items-end';
+								}else{
+									setClassMsg = 'align-items-start';
+								}
+								HTML += `<div class="d-flex flex-column mb-5 ${setClassMsg}">
+										<div class="d-flex align-items-center">
+											<div class="symbol symbol-circle symbol-40 mr-3">
+												<img alt="Pic" src="<?=$assets?>/uploads/${res[i].avatar}">
+											</div>
+											<div>
+												<a href="#" class="text-dark-75 text-hover-primary font-weight-bold font-size-h6">${res[i].first_name}</a>
+											</div>
+										</div>
+										<div class="mt-2 rounded p-5 bg-light-success text-dark-50 font-weight-bold font-size-lg text-left max-w-400px">${res[i].body}</div>
+									</div>`
+							}
+							$('.previousmsgs').html(HTML);
+							$("#allMsgModal").modal('show');
+							setTimeout(function(){
+								$('.previousmsgs').scrollTop($('.previousmsgs')[0].scrollHeight);
+							},500);
 						}
 
 					});

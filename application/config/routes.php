@@ -91,7 +91,8 @@ $route['users/getactivemessages'] = 'users/user/get_active_messages';
 $route['users/updatemessagenumber'] = 'users/user/update_message_number';
 //see messages
 $route['users/messages'] = 'users/user/messages';
-
+//get inbox msgs
+$route['users/inboxmsgs'] = 'users/user/inbox_msgs';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

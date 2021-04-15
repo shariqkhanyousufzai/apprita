@@ -81,3 +81,7 @@ button#kt_aside_toggle {
     width: 20px!important;
     right: -9px;
 }
+.previousmsgs {
+    height: 232px!important;
+    overflow-y: scroll;
+}

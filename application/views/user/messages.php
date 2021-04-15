@@ -186,7 +186,7 @@
 		}
 	?>
 	<!--begin::Items-->
-	<div class="list list-hover min-w-500px" data-userid="<?=$getAllMessage->sender_id?>" data-inbox="list">
+	<div class="list list-hover min-w-500px inboxmsg" data-userid="<?=$getAllMessage->sender_id?>" data-inbox="list">
 		<!--end::Item-->
 		<!--begin::Item-->
 		<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">

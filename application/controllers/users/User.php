@@ -138,4 +138,9 @@ class User extends CI_Controller {
 		$data['getAllMessages'] = $this->user_model->getAllMessages();
 		$this->page_construct('user/messages',$data);
 	}
+
+	public function inbox_msgs(){
+		$getInboxMsgs = $this->user_model->getInboxMsgs($this->input->post('getInboxUser'));
+		echo json_encode($getInboxMsgs);
+	}
 }

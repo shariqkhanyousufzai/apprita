@@ -83,7 +83,7 @@ class User_model extends CI_Model
 	}
 
 	function getAllMessages(){
-		$this->db->select('u.first_name,u.group_name,u.avatar,m.body,TIMESTAMPDIFF(MINUTE,m.created_on,NOW()) as diff,sender_id');
+		$this->db->select('u.first_name,u.group_name,u.avatar,m.body,MAX(TIMESTAMPDIFF(MINUTE,m.created_on,NOW())) as diff,sender_id');
         $this->db->from('message as m');
         $this->db->join('users as u','m.sender_id = u.id');
         $this->db->where('m.reciever_id', $this->session->userdata('user_id'));
@@ -98,6 +98,23 @@ class User_model extends CI_Model
         $this->db->from('message');
         $this->db->where('status',0);
         $this->db->where('reciever_id', $this->session->userdata('user_id'));
+        $query = $this->db->get();
+        return $query->result();
+	}
+
+	function getInboxMsgs($id){
+		$this->db->select('u.first_name,u.group_name,u.avatar,m.body,TIMESTAMPDIFF(MINUTE,m.created_on,NOW()) as diff,sender_id');
+        $this->db->from('message as m');
+        $this->db->join('users as u','m.sender_id = u.id');
+        $this->db->group_start();
+        $this->db->where('m.sender_id', $this->session->userdata('user_id'));
+        $this->db->or_where('m.sender_id', $id);
+        $this->db->group_end();
+        $this->db->group_start();
+        $this->db->where('m.reciever_id', $this->session->userdata('user_id'));
+        $this->db->or_where('m.reciever_id', $id);
+        $this->db->group_end();
+        $this->db->order_by('m.id');
         $query = $this->db->get();
         return $query->result();
 	}
