@@ -174,8 +174,19 @@
 <!--end::Header-->
 <!--begin::Body-->
 <div class="card-body table-responsive px-0">
+	<?php
+	foreach ($getAllMessages as $getAllMessage) {
+		if($getAllMessage->diff < 60)
+		{
+			$timeDiff = $getAllMessage->diff . ' Minutes ago';
+		}else if($getAllMessage->diff >= 60 && $getAllMessage->diff <= 1440){
+			$timeDiff = round($getAllMessage->diff / 60) . ' Hours ago' ;
+		}else{
+			$timeDiff = round($getAllMessage->diff / 1440) . ' Days ago' ;
+		}
+	?>
 	<!--begin::Items-->
-	<div class="list list-hover min-w-500px" data-inbox="list">
+	<div class="list list-hover min-w-500px" data-userid="<?=$getAllMessage->sender_id?>" data-inbox="list">
 		<!--end::Item-->
 		<!--begin::Item-->
 		<div class="d-flex align-items-start list-item card-spacer-x py-3" data-inbox="message">
@@ -195,9 +206,9 @@
 				<!--begin::Author-->
 				<div class="d-flex align-items-center flex-wrap w-xxl-200px mr-3" data-toggle="view">
 					<span class="symbol symbol-35 mr-3">
-						<span class="symbol-label" style="background-image: url('assets/media/users/100_10.jpg')"></span>
+						<span class="symbol-label" style="background-image: url('<?=$assets?>/uploads/<?=$getAllMessage->avatar?>')"></span>
 					</span>
-					<a href="#" class="font-weight-bold text-dark-75 text-hover-primary">Jane Goodall</a>
+					<a href="#" class="font-weight-bold text-dark-75 text-hover-primary"><?=$getAllMessage->first_name?></a>
 				</div>
 				<!--end::Author-->
 			</div>
@@ -205,16 +216,18 @@
 			<!--begin::Info-->
 			<div class="flex-grow-1 mt-2 mr-2" data-toggle="view">
 				<div>
-					<span class="font-weight-bolder font-size-lg mr-2">Payment Notification DLOP2329KD -</span>
-					<span class="text-muted">Your payment of 4500USD to AirCar has been authorized and confirmed, thank you your account. This...</span>
+					<!-- <span class="font-weight-bolder font-size-lg mr-2">Payment Notification DLOP2329KD -</span> -->
 				</div>
 			</div>
 			<!--end::Info-->
 			<!--begin::Datetime-->
-			<div class="mt-2 mr-3 font-weight-normal w-100px text-right text-muted" data-toggle="view">2 days ago</div>
+			<div class="mt-2 mr-3 font-weight-normal w-100px text-right text-muted" data-toggle="view"><?=$timeDiff?></div>
 			<!--end::Datetime-->
 		</div>
 	</div>
+	<?php
+	}
+	?>
 	<!--end::Items-->
 </div>
 <!--end::Body-->

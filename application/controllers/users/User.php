@@ -135,6 +135,7 @@ class User extends CI_Controller {
 	}
 
 	public function messages(){
-		$this->page_construct('user/messages');
+		$data['getAllMessages'] = $this->user_model->getAllMessages();
+		$this->page_construct('user/messages',$data);
 	}
 }

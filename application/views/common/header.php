@@ -331,7 +331,7 @@
 	<!--end::Scroll-->
 	<!--begin::Action-->
 	<div class="d-flex flex-center pt-7">
-		<a href="#" class="btn btn-light-primary font-weight-bold text-center">See All</a>
+		<a href="<?php echo base_url('users/messages'); ?>" class="btn btn-light-primary font-weight-bold text-center">See All</a>
 	</div>
 	<!--end::Action-->
 </div>

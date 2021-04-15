@@ -82,6 +82,17 @@ class User_model extends CI_Model
         return $query->result();
 	}
 
+	function getAllMessages(){
+		$this->db->select('u.first_name,u.group_name,u.avatar,m.body,TIMESTAMPDIFF(MINUTE,m.created_on,NOW()) as diff,sender_id');
+        $this->db->from('message as m');
+        $this->db->join('users as u','m.sender_id = u.id');
+        $this->db->where('m.reciever_id', $this->session->userdata('user_id'));
+        $this->db->group_by('m.sender_id');
+        $this->db->order_by('m.id','DESC');
+        $query = $this->db->get();
+        return $query->result();
+	}
+
 	function getActiveMessages(){
 		$this->db->select('count(id) as activemsg');
         $this->db->from('message');
