@@ -192,7 +192,7 @@ var KTWizard5 = function () {
 							}
 						}
 					},
-					packaging: {
+					price: {
 						validators: {
 							notEmpty: {
 								message: 'Packaging type is required'

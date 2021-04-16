@@ -103,6 +103,8 @@ $route['announcement/addannouncement'] = 'announcement/add_announcement';
 $route['announcement/getannouncementbyid'] = 'announcement/getAnnouncementById';
 //get Unread Announcement Number
 $route['announcement/getunreadannouncement'] = 'announcement/getUnreadAnnouncement';
+//create Advertisement
+$route['advertisement/create'] = 'advertisement/create';
 
 
 $route['404_override'] = '';
