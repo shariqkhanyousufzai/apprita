@@ -298,6 +298,16 @@
 <!--begin::Notifications-->
 <div class="dropdown mr-1">
 <!--begin::Toggle-->
+<a href="<?=base_url('announcement/list')?>">
+<div class="btn btn-icon btn-clean btn-dropdown btn-lg pulse pulse-primary mt-4">
+<span class="label label-xl label-dark mr-2 headertop notifyannouncement">0</span>
+<span class="svg-icon svg-icon-danger svg-icon-2x">
+	 <span class="icon-2x text-warning flaticon-bell"></span>
+</span>
+<span class="pulse-ring"></span>
+</div>
+</a>
+
 <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
 <div class="btn btn-icon btn-clean btn-dropdown btn-lg pulse pulse-primary headermessage">
 <span class="label label-xl label-success mr-2 notifymsgnumber">0</span>
@@ -574,7 +584,7 @@
 <!--begin::User-->
 <div class="topbar-item ml-4" id="kt_quick_user_toggle">
 	<div data-toggle="tooltip" class="btn btn-icon btn-light-primary h-40px w-40px p-0" id="kt_quick_user_toggle">
-		<img src="<?=$assets?>/media/svg/avatars/004-boy-1.svg" class="h-30px align-self-end" alt="" />
+		<img src="<?=$assets?>/uploads/<?=callsession('avatar')?>" class="h-30px align-self-end" alt="" />
 	</div>
 
 	<div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2" >

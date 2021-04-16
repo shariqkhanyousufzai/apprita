@@ -200,3 +200,18 @@ if ( ! function_exists('get_messages'))
             echo json_encode($query->result());
         }
     }
+
+if ( ! function_exists('get_latest_annoucements'))
+    {
+        function get_latest_annoucements()
+        {
+            $CI =& get_instance();
+            $q = $CI->db->select('a.name,ac.name as categoryname');
+            $CI->db->from('announcement a');
+            $CI->db->join('announcement_category ac','a.announcement_category_id = ac.id');
+            $CI->db->limit(4);
+            $CI->db->order_by('a.id','DESC');
+            $q = $CI->db->get();
+            return $q->result();
+        }
+    }

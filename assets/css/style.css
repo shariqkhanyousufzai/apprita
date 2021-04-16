@@ -90,3 +90,11 @@ button#kt_aside_toggle {
     top: 6px;
     left: 34px;
 }
+
+.headertop.notifyannouncement{
+    position: absolute!important;
+    top: 2px!important;
+    height: 20px!important;
+    width: 20px!important;
+    left: 24px;
+}
