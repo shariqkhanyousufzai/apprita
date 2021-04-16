@@ -93,6 +93,17 @@ $route['users/updatemessagenumber'] = 'users/user/update_message_number';
 $route['users/messages'] = 'users/user/messages';
 //get inbox msgs
 $route['users/inboxmsgs'] = 'users/user/inbox_msgs';
+//create announcement
+$route['announcement/create'] = 'announcement/create';
+//list announcement
+$route['announcement/list'] = 'announcement/list';
+//add announcement
+$route['announcement/addannouncement'] = 'announcement/add_announcement';
+//get announcement by id
+$route['announcement/getannouncementbyid'] = 'announcement/getAnnouncementById';
+//get Unread Announcement Number
+$route['announcement/getunreadannouncement'] = 'announcement/getUnreadAnnouncement';
+
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -229,6 +229,24 @@
 						<span class="menu-text">Messages </span>
 					</a>
 				</li>
+				<li class="menu-item  <?= ($this->uri->segment(1) == 'announcement'  && $this->uri->segment(2) == 'create') ? 'menu-item-active' : ''; ?>" aria-haspopup="true">
+					<a href="<?php echo base_url('announcement/create'); ?>" class="menu-link">
+						<span style="    font-size: 20px !important;" class="icon-1x text-dark-50 flaticon-edit">
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text ml-3">  Create Announcement </span>
+					</a>
+				</li>
+				<li class="menu-item  <?= ($this->uri->segment(1) == 'announcement'  && $this->uri->segment(2) == 'list') ? 'menu-item-active' : ''; ?>" aria-haspopup="true">
+					<a href="<?php echo base_url('announcement/list'); ?>" class="menu-link">
+						<span style="    font-size: 20px !important;" class="icon-2x text-dark-50 flaticon-bell">
+							<!--end::Svg Icon-->
+						</span>
+						<span class="label label-md label-danger mr-2 notifyannouncement">0</span>
+						<span class="menu-text ml-3">  Announcements </span>
+					</a>
+				</li>
+				
 				<li class="menu-item <?= ($this->uri->segment(2) == 'profile') ? 'menu-item-active' : ''; ?>" aria-haspopup="true">
 					<a href="<?php echo base_url('users/profile'); ?>" class="menu-link ">
 						<span class="svg-icon menu-icon">

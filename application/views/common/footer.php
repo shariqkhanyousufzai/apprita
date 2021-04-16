@@ -18,6 +18,23 @@
 	</div>
 </div>
 
+<div class="modal fade " id="announcementModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Message</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<i aria-hidden="true" class="ki ki-close"></i>
+				</button>
+			</div>
+			<div class="modal-body announcement_msg"></div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="modal fade " id="allMsgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-modal="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
@@ -646,9 +663,9 @@
 								  "preventDuplicates": false,
 								  "onclick": null,
 								  "showDuration": "300",
-								  "hideDuration": "1000",
+								  "hideDuration": "5000",
 								  "timeOut": "6000",
-								  "extendedTimeOut": "1000",
+								  "extendedTimeOut": "5000",
 								  "showEasing": "swing",
 								  "hideEasing": "linear",
 								  "showMethod": "fadeIn",
@@ -660,6 +677,9 @@
 						currentMsgCount = data;
 					});
 				},10000);
+
+
+
 
 				// when click on message
 				$(document).on('click','.headermessage',function(){
@@ -712,6 +732,42 @@
 
 					});
 				});
+				var currentAnnouncementCount = 0;
+				// anouncemnet count 
+				$.getJSON( "<?=base_url('announcement/getunreadannouncement')?>", function(data) {
+						$('.notifyannouncement').html(data);
+						currentAnnouncementCount = data;
+				});
+
+				// call get active messages
+				setInterval(()=>{
+					$.getJSON( "<?=base_url('announcement/getunreadannouncement')?>", function(data) {
+						$('.notifyannouncement').html(data);
+						if(currentAnnouncementCount < data){
+							toastr.options = {
+								  "closeButton": true,
+								  "debug": false,
+								  "newestOnTop": false,
+								  "progressBar": true,
+								  "positionClass": "toast-top-right",
+								  "preventDuplicates": false,
+								  "onclick": null,
+								  "showDuration": "300",
+								  "hideDuration": "5000",
+								  "timeOut": "6000",
+								  "extendedTimeOut": "5000",
+								  "showEasing": "swing",
+								  "hideEasing": "linear",
+								  "showMethod": "fadeIn",
+								  "hideMethod": "fadeOut"
+								};
+
+								toastr.success("One New Announcement", "Hi,");
+						}
+						currentAnnouncementCount = data;
+					});
+				},10000);
+
 			});
 		</script>
 	</body>

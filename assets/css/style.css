@@ -85,3 +85,8 @@ button#kt_aside_toggle {
     height: 232px!important;
     overflow-y: scroll;
 }
+.notifyannouncement {
+    position: absolute;
+    top: 6px;
+    left: 34px;
+}
