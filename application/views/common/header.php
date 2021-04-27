@@ -255,6 +255,14 @@
 						<span class="menu-text ml-3"> Create Advertisement </span>
 					</a>
 				</li>
+				<li class="menu-item  <?= ($this->uri->segment(1) == 'advertisement'  && $this->uri->segment(2) == 'list') ? 'menu-item-active' : ''; ?>" aria-haspopup="true">
+					<a href="<?php echo base_url('advertisement/list'); ?>" class="menu-link">
+						<span style="    font-size: 20px !important;" class="flaticon-squares-4 text-dark-50 flaticon-notes">
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text ml-3">Advertisement List</span>
+					</a>
+				</li>
 				
 				<li class="menu-item <?= ($this->uri->segment(2) == 'profile') ? 'menu-item-active' : ''; ?>" aria-haspopup="true">
 					<a href="<?php echo base_url('users/profile'); ?>" class="menu-link ">

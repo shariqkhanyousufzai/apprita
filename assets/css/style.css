@@ -98,3 +98,13 @@ button#kt_aside_toggle {
     width: 20px!important;
     left: 24px;
 }
+
+.advertisementimg{
+    width: 100%;
+}
+.addressrow{
+    background: #242939;
+    color: #989ca8;
+    border-radius: 5px;
+    padding: 20px 10px;
+}

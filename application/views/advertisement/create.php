@@ -74,7 +74,7 @@
                                         <div class="w-lg-50">
                                             <div class="py-8 px-8 pt-lg-30 pb-lg-20 px-lg-20">
                                                 <!--begin: Wizard Form-->
-                                                <form method="post" action="<?=base_url()?>" class="form" id="kt_form">
+                                                <form method="post" action="<?=base_url('advertisement/add')?>" class="form" id="kt_form" enctype="multipart/form-data">
                                                     <!--begin: Wizard Step 1-->
                                                     <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
                                                         <h4 class="mb-10 font-weight-bold text-dark">Enter your Account Details</h4>

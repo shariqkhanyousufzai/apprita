@@ -105,7 +105,10 @@ $route['announcement/getannouncementbyid'] = 'announcement/getAnnouncementById';
 $route['announcement/getunreadannouncement'] = 'announcement/getUnreadAnnouncement';
 //create Advertisement
 $route['advertisement/create'] = 'advertisement/create';
-
+//post Advertisement
+$route['advertisement/add'] = 'advertisement/add';
+//list Advertisement
+$route['advertisement/list'] = 'advertisement/list';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
