@@ -109,6 +109,12 @@ $route['advertisement/create'] = 'advertisement/create';
 $route['advertisement/add'] = 'advertisement/add';
 //list Advertisement
 $route['advertisement/list'] = 'advertisement/list';
+//create Meeting
+$route['meeting/create'] = 'meeting/create';
+//save Meeting
+$route['meeting/save'] = 'meeting/save';
+//list Meeting
+$route['meeting/list'] = 'meeting/list';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

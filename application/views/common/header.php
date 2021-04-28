@@ -263,6 +263,24 @@
 						<span class="menu-text ml-3">Advertisement List</span>
 					</a>
 				</li>
+
+				<li class="menu-item  <?= ($this->uri->segment(1) == 'meeting'  && $this->uri->segment(2) == 'create') ? 'menu-item-active' : ''; ?>" aria-haspopup="true">
+					<a href="<?php echo base_url('meeting/create'); ?>" class="menu-link">
+						<span style="    font-size: 20px !important;" class="flaticon-clock-2 text-dark-50 flaticon-notes">
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text ml-3">Board Member Meeting</span>
+					</a>
+				</li>
+
+				<li class="menu-item  <?= ($this->uri->segment(1) == 'meeting'  && $this->uri->segment(2) == 'list') ? 'menu-item-active' : ''; ?>" aria-haspopup="true">
+					<a href="<?php echo base_url('meeting/list'); ?>" class="menu-link">
+						<span style="    font-size: 20px !important;" class="far fa-list-alt text-dark-50 ">
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text ml-3"> Meeting List</span>
+					</a>
+				</li>
 				
 				<li class="menu-item <?= ($this->uri->segment(2) == 'profile') ? 'menu-item-active' : ''; ?>" aria-haspopup="true">
 					<a href="<?php echo base_url('users/profile'); ?>" class="menu-link ">
