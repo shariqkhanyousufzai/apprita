@@ -394,6 +394,7 @@
                 })
         </script>
         <?php
+        unset($_SESSION['message']);
         }
         ?>
         <script type="text/javascript">
