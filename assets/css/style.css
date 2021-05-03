@@ -108,3 +108,9 @@ button#kt_aside_toggle {
     border-radius: 5px;
     padding: 20px 10px;
 }
+h3.card-label.badge.badge-danger.text-white.advertbadge {
+       position: absolute!important;
+    left: -10px!important;
+    top: 19px!important;
+    background: #242939!important;
+}

@@ -46,15 +46,26 @@ class Meeting extends CI_Controller {
 
 	public function save()
 	{
+		$attendantArray = $this->input->post('attendant');
+		$implodeAttendant = implode(',', $this->input->post('attendant'));
 		$data = array(
 			'name' => $this->input->post('name'),
 			'start_time' => $this->input->post('start_time'),
 			'duration' => $this->input->post('duration'),
 			'password' => $this->input->post('password'),
-			'attendant' => json_encode($this->input->post('attendant')),
+			'attendant' => $implodeAttendant,
 			'meeting_url' => $this->input->post('meeting_url'),
 			'created_by' => $this->session->userdata('user_id'),
 		);
+		$message = 
+		'
+		Meeting URL : '.$this->input->post('meeting_url').'<br>
+		Meeting Password : '.$this->input->post('password').'<br>
+		';
+		foreach ($attendantArray as $id) {
+			$email = $this->getUserEmailById($id);
+			$this->sendEmail($message,'hackbaby1996@gmail.com');
+		}
 
 		if($this->meeting_model->createMeeting($data)){
 			$this->session->set_flashdata('message',  'Zoom Meeting Added Successful');
@@ -63,6 +74,37 @@ class Meeting extends CI_Controller {
 			$this->session->set_flashdata('message',  validation_errors());
     	    redirect(base_url('meeting/create'),'refresh');
 		}
+	}
+
+
+	function sendEmail($message,$to_email){
+		$config = array(
+			'protocol' => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_port' => 465, //465
+			'smtp_user' => 'hackbaby1996@gmail.com',
+			'smtp_pass' => 'feb231996',
+			'mailtype' => 'html',
+			'charset' => 'iso-8859-1',
+			'wordwrap' => TRUE
+		);
+
+		$this->email->initialize($config);
+		$this->email->set_newline("\r\n");
+		$this->email->from('Rita');
+		$this->email->to($to_email);
+		$this->email->subject('Meeting Schedule');
+		$this->email->message($message);
+		$this->email->send();
+	}
+
+	function getUserEmailById($id){
+		$this->db->select('email');
+		$this->db->from('users');
+		$this->db->where('id',$id);
+	    $q = $this->db->get()->result()[0]->email;
+	    return $q;
+
 	}
 
 }

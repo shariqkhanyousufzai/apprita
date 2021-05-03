@@ -45,7 +45,7 @@
                                         <div class="card card-custom">
                                             <div class="card-header card-header-tabs-line">
                                                 <div class="card-title">
-                                                    <h3 class="card-label badge badge-danger text-white">Price : <?=$getAllAdvertisement->price?> $</h3>
+                                                    <h3 class="card-label advertbadge badge badge-danger text-white"><?=$getAllAdvertisement->price?> $</h3>
                                                 </div>
                                                 <div class="card-toolbar">
                                                     <ul class="nav nav-tabs nav-bold nav-tabs-line">
