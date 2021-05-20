@@ -36,6 +36,10 @@ class DB {
         $result = $this->get_access_token();
         return $result->refresh_token;
     }
+
+    public function deleteToken(){
+        $this->db->query("DELETE FROM token");
+    }
   
     public function update_access_token($token) {
         if($this->is_table_empty()) {

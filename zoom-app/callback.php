@@ -18,7 +18,7 @@ try {
     $token = json_decode($response->getBody()->getContents(), true);
   
     $db = new DB();
-  
+    $db->deleteToken();
     if($db->is_table_empty()) {
         $db->update_access_token(json_encode($token));
         echo "Access token inserted successfully.";

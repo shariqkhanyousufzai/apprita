@@ -36,6 +36,7 @@
                                 <span class="example-toggle" data-toggle="tooltip" title="View code"></span>
                                 <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>
                             </div>
+                        <a class="btn btn-info genrate_token" href="<?=base_url('zoom-app/')?>" onclick="window.open(this.href, 'windowName', 'width=500, height=500, left=24, top=24, scrollbars, resizable'); return false;">Generate Token</a>
                         </div>
                     </div>
                     <!--begin::Form-->
@@ -87,7 +88,7 @@
                     </div>
                     <input type="hidden" name="topic_message" class="topic_message">
         <div class="card-footer" align="right">
-        <button type="button" class="btn btn-primary mr-2 addtopicbtn">Create Meeting</button>
+        <button type="button" class="btn btn-primary mr-2 addtopicbtn aftertoken" style="display: none;">Create Meeting</button>
      </div>
  </form>
  <!--end::Form-->
@@ -118,6 +119,11 @@
             }
         });
     });
+    $(document).on('click','.genrate_token',(e)=>{
+        setTimeout(function(){
+            $('.aftertoken').show();
+        },2000);
+    })
 
     $(document).ready(function(){
          $('#kt_select2_3').select2({

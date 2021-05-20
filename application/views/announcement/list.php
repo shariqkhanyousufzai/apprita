@@ -67,12 +67,12 @@
                          </div>
                      </div>
                      <table class="discussionlist datatable datatable-bordered datatable-head-custom" id="kt_datatable">
-                        <thead>
-                            <tr>
+                        <thead style="text-align: center;">
+                            <tr style="text-align: center;">
                                 <th class="all">ID</th>
                                 <th class="all">Name</th>
                                 <th class="all">Category</th>
-                                <th class="actiondt">Announcement</th>
+                                <!-- <th class="actiondt">Announcement</th> -->
                                 <th class="all" >Action</th>
                                 <th class="all" ></th>
                             </tr>
@@ -81,14 +81,14 @@
                             <?php 
                             $sno = 1;
                             foreach($announcements as $announcement ){?>
-                                <tr>
+                                <tr style="text-align: center;">
                                     <td><?php echo $sno;?></td>
                                     <td><?php echo $announcement->name;?></td>
                                     <td><?php echo $announcement->category;?></td>
-                                    <td>
+                                   <!--  <td>
                                         <?php echo substr($announcement->body, 0, 70)?>...
-                                    </td>
-                                    <td title="Read Announcement"><a style="cursor: pointer;" title="Read Announcement" data-id="<?=$announcement->id?>" class="read_accouncement"><i class="icon-2x text-dark-50 flaticon2-rectangular"></i></a></td>
+                                    </td> -->
+                                    <td title="Read Announcement" style="text-align: center;"><a style="cursor: pointer;" title="Read Announcement" data-id="<?=$announcement->id?>" class="read_accouncement"><i class="icon-2x text-dark-50 flaticon2-rectangular"></i></a></td>
                                 </tr>
                                 <?php $sno++;
                             }?>
