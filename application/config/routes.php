@@ -115,6 +115,9 @@ $route['meeting/create'] = 'meeting/create';
 $route['meeting/save'] = 'meeting/save';
 //list Meeting
 $route['meeting/list'] = 'meeting/list';
-
+//upload document
+$route['document/add'] = 'document';
+// create document
+$route['document/create'] = 'document/create';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

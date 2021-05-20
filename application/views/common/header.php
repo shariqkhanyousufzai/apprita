@@ -281,6 +281,14 @@
 						<span class="menu-text ml-3"> Meeting List</span>
 					</a>
 				</li>
+				<li class="menu-item  <?= ($this->uri->segment(1) == 'document'  && $this->uri->segment(2) == 'add') ? 'menu-item-active' : ''; ?>" aria-haspopup="true">
+					<a href="<?php echo base_url('document/add'); ?>" class="menu-link">
+						<span style="    font-size: 20px !important;" class="far fa-list-alt text-dark-50 ">
+							<!--end::Svg Icon-->
+						</span>
+						<span class="menu-text ml-3"> Upload Document</span>
+					</a>
+				</li>
 				
 				<li class="menu-item <?= ($this->uri->segment(2) == 'profile') ? 'menu-item-active' : ''; ?>" aria-haspopup="true">
 					<a href="<?php echo base_url('users/profile'); ?>" class="menu-link ">
