@@ -47,7 +47,7 @@ class Document extends CI_Controller {
 		for($i=0; $i<$cpt; $i++)
 		{ 
 			$img_type = $files['document']['type'][$i];
-			$img_name = $files['document']['name'][$i];
+			$img_name = trim($files['document']['name'][$i]);
 			$tmp = explode('.', $img_name);
 			$file_ext = end($tmp);
 			$_FILES['document']['name']= $files['document']['name'][$i];
