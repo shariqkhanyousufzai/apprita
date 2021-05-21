@@ -564,8 +564,7 @@
 				setInterval(()=>{
 					$.getJSON( "<?=base_url('users/getactivemessages')?>", function(data) {
 						$('.notifymsgnumber').html(data);
-						console.log(data)
-						console.log(currentMsgCount)
+						
 						if(currentMsgCount < data){
 							toastr.options = {
 								  "closeButton": true,
@@ -653,34 +652,119 @@
 				});
 
 				// call get active messages
-				setInterval(()=>{
-					$.getJSON( "<?=base_url('announcement/getunreadannouncement')?>", function(data) {
-						$('.notifyannouncement').html(data);
-						if(currentAnnouncementCount < data){
-							toastr.options = {
-								  "closeButton": true,
-								  "debug": false,
-								  "newestOnTop": false,
-								  "progressBar": true,
-								  "positionClass": "toast-top-right",
-								  "preventDuplicates": false,
-								  "onclick": null,
-								  "showDuration": "300",
-								  "hideDuration": "5000",
-								  "timeOut": "6000",
-								  "extendedTimeOut": "5000",
-								  "showEasing": "swing",
-								  "hideEasing": "linear",
-								  "showMethod": "fadeIn",
-								  "hideMethod": "fadeOut"
-								};
+				// setInterval(()=>{
+				// 	$.getJSON( "<?=base_url('announcement/getunreadannouncement')?>", function(data) {
+				// 		$('.notifyannouncement').html(data);
+				// 		if(currentAnnouncementCount < data){
+							
+				// 		}
+				// 		currentAnnouncementCount = data;
+				// 	});
+				// },10000);
 
-								toastr.success("One New Announcement", "Hi,");
+			});
+
+
+		</script>
+		<!-- //firebase hit url -->
+		<script>
+			var firebaseConfig = {
+				apiKey: "AIzaSyDzIIy78Kc1Da9vJYwpjhu8L1xGS05abiM",
+				authDomain: "test-app-ce7c9.firebaseapp.com",
+				projectId: "test-app-ce7c9",
+				storageBucket: "test-app-ce7c9.appspot.com",
+				messagingSenderId: "1008318661047",
+				appId: "1:1008318661047:web:60013725f1b192ea9d2832",
+				measurementId: "G-LKG09GQCFM"
+			};
+			firebase.initializeApp(firebaseConfig);
+			const messaging=firebase.messaging();
+
+			function IntitalizeFireBaseMessaging() {
+				messaging
+				.requestPermission()
+				.then(function () {
+					console.log("Notification Permission");
+					return messaging.getToken();
+				})
+				.then(function (token) {
+					console.log("Token : "+token);
+					$.ajax({
+						url : '<?=base_url('firebase/add_token')?>',
+						type : 'post',
+						data :{
+							token : token
+						},
+						success: function(data){
 						}
-						currentAnnouncementCount = data;
-					});
-				},10000);
 
+					});
+				})
+				.catch(function (reason) {
+					console.log(reason);
+				});
+			}
+
+			messaging.onMessage(function (payload) {
+				console.log(payload);
+				toastr.options = {
+					"closeButton": true,
+					"debug": false,
+					"newestOnTop": false,
+					"progressBar": true,
+					"positionClass": "toast-top-right",
+					"preventDuplicates": false,
+					"onclick": null,
+					"showDuration": "300",
+					"hideDuration": "5000",
+					"timeOut": "6000",
+					"extendedTimeOut": "5000",
+					"showEasing": "swing",
+					"hideEasing": "linear",
+					"showMethod": "fadeIn",
+					"hideMethod": "fadeOut"
+				};
+
+				toastr.success("One New Announcement", "Hi,");
+
+				$.getJSON( "<?=base_url('announcement/getunreadannouncement')?>", function(data) {
+						$('.notifyannouncement').html(data);
+						currentAnnouncementCount = data;
+				});
+				const notificationOption={
+					body:payload.notification.body,
+					icon:payload.notification.icon
+				};
+
+				if(Notification.permission==="granted"){
+					var notification=new Notification(payload.notification.title,notificationOption);
+
+					notification.onclick=function (ev) {
+						ev.preventDefault();
+						window.open(payload.notification.click_action,'_blank');
+						notification.close();
+					}
+				}
+
+			});
+			messaging.onTokenRefresh(function () {
+				messaging.getToken()
+				.then(function (newtoken) {
+					console.log("New Token : "+ newtoken);
+				})
+				.catch(function (reason) {
+					console.log(reason);
+				})
+			})
+			IntitalizeFireBaseMessaging();
+
+			document.addEventListener("visibilitychange", function() {
+			  if(document.visibilityState == 'visible'){
+			  	$.getJSON( "<?=base_url('announcement/getunreadannouncement')?>", function(data) {
+						$('.notifyannouncement').html(data);
+						currentAnnouncementCount = data;
+				});
+			  }
 			});
 		</script>
 	</body>

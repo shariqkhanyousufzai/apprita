@@ -11,6 +11,13 @@ class Announcment_model extends CI_Model
 		return $q->result();
 	}
 
+	function getAllDeviceToken(){
+		$this->db->select('*');
+		$this->db->from('firebase_device_token');
+		$q = $this->db->get();
+		return $q->result();
+	}
+
 	function announcements(){
 		$this->db->select('a.*,ac.name as category');
 		$this->db->from('announcement as a');

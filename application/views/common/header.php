@@ -36,6 +36,11 @@
 		<!--end::Page Vendors-->
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="<?=$assets?>/js/pages/widgets.js"></script>
+
+	<!-- scripts for firebase -->
+	<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-messaging.js"></script>
+
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -283,7 +288,7 @@
 				</li>
 				<li class="menu-item  <?= ($this->uri->segment(1) == 'document'  && $this->uri->segment(2) == 'add') ? 'menu-item-active' : ''; ?>" aria-haspopup="true">
 					<a href="<?php echo base_url('document/add'); ?>" class="menu-link">
-						<span style="    font-size: 20px !important;" class="far fa-list-alt text-dark-50 ">
+						<span style="    font-size: 20px !important;" class="flaticon2-file text-dark-50 ">
 							<!--end::Svg Icon-->
 						</span>
 						<span class="menu-text ml-3"> Upload Document</span>

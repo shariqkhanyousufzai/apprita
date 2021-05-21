@@ -60,6 +60,10 @@ class Announcement extends CI_Controller {
 			'created_by' => $this->session->userdata('user_id'),
 			'read_by' => $this->session->userdata('user_id'),
 		);
+		$getAllDeviceToken = $this->announcment_model->getAllDeviceToken();
+		foreach ($getAllDeviceToken as $key) {
+			$this->sendNotification($key->token,$_POST['name'],'New Announcement','announcement');
+		}
 		$this->announcment_model->addAnnouncement($dataTopic);
 		$this->session->set_flashdata('message', 'Announcement Created Succesfully');
         redirect(base_url('announcement/list'),'refresh');
@@ -80,4 +84,35 @@ class Announcement extends CI_Controller {
 		}
 		echo json_encode($announcementRes);
 	}
+
+
+	function sendNotification($token,$message,$title,$type){
+		    $url ="https://fcm.googleapis.com/fcm/send";
+
+		    $fields=array(
+		        "to"=> $token,
+		        "notification"=>array(
+		            "body"=>$message,
+		            "title"=>$title,
+		            "type" =>$type,
+		            "icon"=>'',
+		            "click_action"=>"https://google.com"
+		        )
+		    );
+
+		    $headers=array(
+		        'Authorization: key=AAAA6sR5wbc:APA91bHbuq4Syw83LdJMKN0U5qXdfQ05-rZAaKL5JT_W5fZEbjqhR9nWfu13d3BKKpKNXgtnSF8XUNJiNXhIMdr22lB8w7bhzKr-tvbzOW9gfJ3QGoo6v4I2OypHkknzt8-l6RF1YjQ2',
+		        'Content-Type:application/json'
+		    );
+
+		    $ch=curl_init();
+		    curl_setopt($ch,CURLOPT_URL,$url);
+		    curl_setopt($ch,CURLOPT_POST,true);
+		    curl_setopt($ch,CURLOPT_HTTPHEADER,$headers);
+		    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+		    curl_setopt($ch,CURLOPT_POSTFIELDS,json_encode($fields));
+		    $result=curl_exec($ch);
+		    // print_r($result);
+		    curl_close($ch);
+		}
 }
