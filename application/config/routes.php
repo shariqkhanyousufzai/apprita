@@ -119,5 +119,11 @@ $route['meeting/list'] = 'meeting/list';
 $route['document/add'] = 'document';
 // create document
 $route['document/create'] = 'document/create';
+// add dues
+$route['dues/add'] = 'dues/add';
+// list dues
+$route['dues/list'] = 'dues/list';
+// create dues
+$route['dues/create'] = 'dues/create';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
