@@ -36,17 +36,21 @@
             <form autocomplete="off" method="post" action="<?= base_url('dues/create') ?>" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <label>First Name: </label>
                         <input type="text" name="first_name" required class="form-control" placeholder="First Name">
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <label>Last Name: </label>
                         <input type="text" name="last_name" required  class="form-control" placeholder="Last Name">
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6 mt-5">
                         <label>Email: </label>
                         <input type="email" name="email" required class="form-control" placeholder="Email">
+                    </div>
+                    <div class="col-sm-6 mt-5">
+                        <label>Phone: </label>
+                        <input type="text" name="phone" required class="form-control" placeholder="Phone">
                     </div>
                     <div class="col-sm-4 mt-5">
                         <label>Dues Price: </label>

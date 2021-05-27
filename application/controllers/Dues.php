@@ -46,6 +46,7 @@ class Dues extends CI_Controller {
 			'first_name' => $this->input->post('first_name'),
 			'last_name' => $this->input->post('last_name'),
 			'email' => $this->input->post('email'),
+			'phone' => $this->input->post('phone'),
 			'price' => $this->input->post('price'),
 			'start_date' => $this->input->post('start_date'),
 			'end_date' => $this->input->post('end_date'),

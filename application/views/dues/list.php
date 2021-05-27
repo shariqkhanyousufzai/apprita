@@ -41,6 +41,7 @@
                                 <th  class="all">First Name</th>
                                 <th  class="all">Last Name</th>
                                 <th  class="all">Email</th>
+                                <th  class="all">Phone</th>
                                 <th  class="all">Price</th>
                                 <th  class="all">Start Date</th>
                                 <th  class="all">End Date</th>
@@ -56,6 +57,7 @@
                                     <td><?php echo $due->first_name;?></td>
                                     <td><?php echo $due->last_name;?></td>
                                     <td><?php echo $due->email;?></td>
+                                    <td><?php echo $due->phone;?></td>
                                     <td><?php echo $due->price;?></td>
                                     <td><?php echo date('d-M-Y',strtotime($due->start_date));?></td>
                                     <td><?php echo date('d-M-Y',strtotime($due->end_date));?></td>
