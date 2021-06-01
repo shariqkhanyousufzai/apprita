@@ -84,7 +84,7 @@
                             foreach($users as $users ){?>
                                 <tr>
                                     <td><?php echo $sno;?></td>
-                                    <td><?php echo $users->full_name;?></td>
+                                    <td><?php echo $users->first_name.' '.$users->last_name;?></td>
                                     <td><?php echo $users->email;?></td>
                                     <td><?php echo group_description_name_by_name($users->group_name);?></td>
                                     <td><?php echo date('Y-m-d',strtotime($users->created_date));?></td>

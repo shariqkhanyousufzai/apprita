@@ -22,6 +22,7 @@ class Announcment_model extends CI_Model
 		$this->db->select('a.*,ac.name as category');
 		$this->db->from('announcement as a');
 		$this->db->join('announcement_category ac','a.announcement_category_id = ac.id','LEFT');
+		$this->db->order_by('a.id','DESC');
 		$q = $this->db->get();
 		return $q->result();
 	}

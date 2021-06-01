@@ -93,16 +93,20 @@ if ( ! function_exists('group_description_name_by_name'))
             $CI =& get_instance();
             $CI->db->where('name',$name);
             $query = $CI->db->get('groups');
+
             if($name == 'admin'){
                 $color = 'danger';
-            }else if($name == 'rita_garrett'){
+            }else if($name == 'president'){
                 $color = 'success';
-            }else if($name == 'lori_nichols'){
+            }else if($name == 'vise_president'){
                 $color = 'info';
-            }else if($name == 'ramesh_anand'){
+            }else if($name == 'secretary'){
                 $color = 'secondary';
+            }else{
+                $color = 'dark';
             }
-            return '<span class="badge badge-'.$color.' ">'.$query->result()[0]->description.'</span>';
+            $makeReturn = '<span class="badge badge-"'.$color.'" ">'.$query->result()[0]->description.'</span>';
+            return $makeReturn;
         }
     }
 

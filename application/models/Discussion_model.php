@@ -16,6 +16,7 @@ class Discussion_model extends CI_Model
 		$this->db->select('t.*,tc.name as category');
 		$this->db->from('topic as t');
 		$this->db->join('topic_category tc','t.topic_category_id = tc.id','LEFT');
+		$this->db->order_by('t.id','DESC');
 		$q = $this->db->get();
 		return $q->result();
 	}
